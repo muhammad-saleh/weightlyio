@@ -13,12 +13,16 @@ const comments = require('../app/controllers/comments');
 const tags = require('../app/controllers/tags');
 const auth = require('./middlewares/authorization');
 
+const getWeight = require('../app/controllers/getWeight');
+const postWeight = require('../app/controllers/postWeight');
+
 /**
  * Route middlewares
  */
 
 const articleAuth = [auth.requiresLogin, auth.article.hasAuthorization];
 const commentAuth = [auth.requiresLogin, auth.comment.hasAuthorization];
+const isAuth = [auth.requiresLogin];
 
 /**
  * Expose routes
@@ -109,6 +113,11 @@ module.exports = function (app, passport) {
 
   // tag routes
   app.get('/tags/:tag', tags.index);
+
+
+  //Weight get
+  app.get('/weight', isAuth, getWeight);
+  app.post('/weight', isAuth, postWeight);
 
 
   /**
