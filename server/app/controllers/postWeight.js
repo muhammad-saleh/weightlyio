@@ -5,14 +5,7 @@
  */
 
 const mongoose = require('mongoose');
-var Schema = mongoose.Schema;
-var WeightSchema = new Schema({
-    weight: String,
-    date: Date,
-    user: String,
-    feel: String
-});
-const Weight = mongoose.model("Weights", WeightSchema);
+var Weight = require('../models/weight');
 
 module.exports = function(req, res){
     console.log(req.user._id)
