@@ -6,7 +6,8 @@ const Weight = require('../models/weight');
 module.exports = function (req, res) {
     Weight.find({
         user: req.user._id.toString()
-    }, function (err, weights) {
+    }, {'_id':0, 'date':1, 'user':1, 'weight':1, 'feel':1},
+    function (err, weights) {
         if (err) {
             res.send(err);
         } else {
