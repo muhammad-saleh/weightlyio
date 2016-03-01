@@ -1,6 +1,8 @@
 {% extends '../layouts/default.html' %}
 
+
 {% block main %}
+    <input type="hidden" value="{{ csrf_token }}" name="_csrf" />
   <h1>{{ title }}</h1>
 {% endblock %}
 

@@ -109,12 +109,12 @@ module.exports = function (app, passport) {
   app.use(helpers(pkg.name));
 
   if (env !== 'test') {
-    // app.use(csrf());
+    app.use(csrf());
 
     // This could be moved to view-helpers :-)
-    // app.use(function (req, res, next) {
-    //   res.locals.csrf_token = req.csrfToken();
-    //   next();
-    // });
+    app.use(function (req, res, next) {
+      res.locals.csrf_token = req.csrfToken();
+      next();
+    });
   }
 };

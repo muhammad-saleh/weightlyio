@@ -20,8 +20,6 @@ const postWeight = require('../app/controllers/postWeight');
  * Route middlewares
  */
 
-const articleAuth = [auth.requiresLogin, auth.article.hasAuthorization];
-const commentAuth = [auth.requiresLogin, auth.comment.hasAuthorization];
 const isAuth = [auth.requiresLogin];
 
 /**
@@ -96,23 +94,23 @@ module.exports = function (app, passport) {
   app.param('id', articles.load);
   app.get('/articles', articles.index);
   app.get('/articles/new', auth.requiresLogin, articles.new);
-  app.post('/articles', auth.requiresLogin, articles.create);
-  app.get('/articles/:id', articles.show);
-  app.get('/articles/:id/edit', articleAuth, articles.edit);
-  app.put('/articles/:id', articleAuth, articles.update);
-  app.delete('/articles/:id', articleAuth, articles.destroy);
+  // app.post('/articles', auth.requiresLogin, articles.create);
+  // app.get('/articles/:id', articles.show);
+  // app.get('/articles/:id/edit', articleAuth, articles.edit);
+  // app.put('/articles/:id', articleAuth, articles.update);
+  // app.delete('/articles/:id', articleAuth, articles.destroy);
 
   // home route
   app.get('/', articles.index);
 
   // comment routes
-  app.param('commentId', comments.load);
-  app.post('/articles/:id/comments', auth.requiresLogin, comments.create);
-  app.get('/articles/:id/comments', auth.requiresLogin, comments.create);
-  app.delete('/articles/:id/comments/:commentId', commentAuth, comments.destroy);
+  // app.param('commentId', comments.load);
+  // app.post('/articles/:id/comments', auth.requiresLogin, comments.create);
+  // app.get('/articles/:id/comments', auth.requiresLogin, comments.create);
+  // app.delete('/articles/:id/comments/:commentId', commentAuth, comments.destroy);
 
   // tag routes
-  app.get('/tags/:tag', tags.index);
+  // app.get('/tags/:tag', tags.index);
 
 
   //Weight get
