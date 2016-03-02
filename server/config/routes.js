@@ -11,6 +11,7 @@ const users = require('../app/controllers/users');
 const auth = require('./middlewares/authorization');
 const getWeight = require('../app/controllers/getWeight');
 const postWeight = require('../app/controllers/postWeight');
+const cors = require('cors');
 
 /**
  * Route middlewares
@@ -23,6 +24,11 @@ const isAuth = [auth.requiresLogin];
  */
 
 module.exports = function (app, passport) {
+
+    var corsOptions = {
+         origin: 'http://localhost:1111',
+         credentials: true
+    };
 
   // user routes
   app.get('/login', users.login);
@@ -37,7 +43,7 @@ module.exports = function (app, passport) {
   app.get('/users/:userId', users.show);
   app.get('/auth/facebook',
     passport.authenticate('facebook', {
-      scope: [ 'email', 'user_about_me'],
+      scope: ['email', 'user_about_me'],
       failureRedirect: '/login'
     }), users.signin);
   app.get('/auth/facebook/callback',
@@ -93,8 +99,8 @@ module.exports = function (app, passport) {
 
 
   //Weight get
-  app.get('/weight', isAuth, getWeight);
-  app.post('/weight', isAuth, postWeight);
+  app.get('/weight', cors(corsOptions), isAuth, getWeight);
+  app.post('/weight', cors(corsOptions), isAuth, postWeight);
 
 
   /**
