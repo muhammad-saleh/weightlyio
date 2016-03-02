@@ -89,7 +89,7 @@ module.exports = function (app, passport) {
 
 
   // home route
-  app.get('/', (req, res)=> res.render('404'));
+  app.get('/', (req, res) => res.render('404'));
 
 
   //Weight get
