@@ -7414,17 +7414,17 @@
 
 	var _reactRouter = __webpack_require__(232);
 
-	var _App = __webpack_require__(289);
+	__webpack_require__(289);
+
+	var _App = __webpack_require__(290);
 
 	var _App2 = _interopRequireDefault(_App);
 
-	var _Routes = __webpack_require__(294);
+	var _Routes = __webpack_require__(296);
 
 	var _Routes2 = _interopRequireDefault(_Routes);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	// import createBrowserHistory from 'history/lib/createBrowserHistory';
 
 	var AppRoot = document.getElementById('App');
 
@@ -31969,6 +31969,12 @@
 
 /***/ },
 /* 289 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 290 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31982,8 +31988,6 @@
 	var _react = __webpack_require__(75);
 
 	var _react2 = _interopRequireDefault(_react);
-
-	__webpack_require__(290);
 
 	var _header = __webpack_require__(291);
 
@@ -32013,11 +32017,6 @@
 	                'div',
 	                null,
 	                _react2.default.createElement(_header2.default, null),
-	                _react2.default.createElement(
-	                    'h1',
-	                    null,
-	                    'Testing react app'
-	                ),
 	                this.props.children
 	            );
 	        }
@@ -32029,12 +32028,6 @@
 	App.path = '/';
 
 	exports.default = App;
-
-/***/ },
-/* 290 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
 
 /***/ },
 /* 291 */
@@ -32054,13 +32047,13 @@
 
 	var _reactRouter = __webpack_require__(232);
 
-	var _HomePage = __webpack_require__(292);
+	var _nav = __webpack_require__(292);
 
-	var _HomePage2 = _interopRequireDefault(_HomePage);
+	var _nav2 = _interopRequireDefault(_nav);
 
-	var _LoginPage = __webpack_require__(293);
+	var _reactFontawesome = __webpack_require__(295);
 
-	var _LoginPage2 = _interopRequireDefault(_LoginPage);
+	var _reactFontawesome2 = _interopRequireDefault(_reactFontawesome);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -32086,31 +32079,25 @@
 	                'header',
 	                null,
 	                _react2.default.createElement(
-	                    'nav',
-	                    null,
+	                    'button',
+	                    { className: 'navTrigger' },
+	                    _react2.default.createElement('i', { className: 'fa fa-bars' })
+	                ),
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'title' },
 	                    _react2.default.createElement(
-	                        'ul',
+	                        'h1',
 	                        null,
-	                        _react2.default.createElement(
-	                            'li',
-	                            null,
-	                            _react2.default.createElement(
-	                                _reactRouter.Link,
-	                                { to: _HomePage2.default.path },
-	                                'Home'
-	                            )
-	                        ),
-	                        _react2.default.createElement(
-	                            'li',
-	                            null,
-	                            _react2.default.createElement(
-	                                _reactRouter.Link,
-	                                { to: _LoginPage2.default.path },
-	                                'Login'
-	                            )
-	                        )
+	                        'Weightly'
+	                    ),
+	                    _react2.default.createElement(
+	                        'h3',
+	                        null,
+	                        'Your way to healthier life'
 	                    )
-	                )
+	                ),
+	                _react2.default.createElement(_nav2.default, null)
 	            );
 	        }
 	    }]);
@@ -32122,6 +32109,86 @@
 
 /***/ },
 /* 292 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(75);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRouter = __webpack_require__(232);
+
+	var _HomePage = __webpack_require__(293);
+
+	var _HomePage2 = _interopRequireDefault(_HomePage);
+
+	var _LoginPage = __webpack_require__(294);
+
+	var _LoginPage2 = _interopRequireDefault(_LoginPage);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Nav = function (_React$Component) {
+	    _inherits(Nav, _React$Component);
+
+	    function Nav() {
+	        _classCallCheck(this, Nav);
+
+	        return _possibleConstructorReturn(this, Object.getPrototypeOf(Nav).apply(this, arguments));
+	    }
+
+	    _createClass(Nav, [{
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(
+	                'nav',
+	                null,
+	                _react2.default.createElement(
+	                    'ul',
+	                    null,
+	                    _react2.default.createElement(
+	                        'li',
+	                        null,
+	                        _react2.default.createElement(
+	                            _reactRouter.Link,
+	                            { to: _HomePage2.default.path },
+	                            'Home'
+	                        )
+	                    ),
+	                    _react2.default.createElement(
+	                        'li',
+	                        null,
+	                        _react2.default.createElement(
+	                            _reactRouter.Link,
+	                            { to: _LoginPage2.default.path },
+	                            'Login'
+	                        )
+	                    )
+	                )
+	            );
+	        }
+	    }]);
+
+	    return Nav;
+	}(_react2.default.Component);
+
+	exports.default = Nav;
+
+/***/ },
+/* 293 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -32172,7 +32239,7 @@
 	exports.default = HomePage;
 
 /***/ },
-/* 293 */
+/* 294 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -32223,7 +32290,111 @@
 	exports.default = LoginPage;
 
 /***/ },
-/* 294 */
+/* 295 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	var _react = __webpack_require__(75);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	/**
+	 * A React component for the font-awesome icon library.
+	 *
+	 *
+	 * @param {Boolean} [border=false] Whether or not to show a border radius
+	 * @param {String} [className] An extra set of CSS classes to add to the component
+	 * @param {Boolean} [fixedWidth=false] Make buttons fixed width
+	 * @param {String} [flip=false] Flip the icon's orientation.
+	 * @param {Boolean} [inverse=false]Inverse the icon's color
+	 * @param {String} name Name of the icon to use
+	 * @param {Boolean} [pulse=false] Rotate icon with 8 steps (rather than smoothly)
+	 * @param {Number} [rotate] The degress to rotate the icon by
+	 * @param {String} [size] The icon scaling size
+	 * @param {Boolean} [spin=false] Spin the icon
+	 * @param {String} [stack] Stack an icon on top of another
+	 * @module FontAwesome
+	 * @type {ReactClass}
+	 */
+	exports['default'] = _react2['default'].createClass({
+
+	  displayName: 'FontAwesome',
+
+	  propTypes: {
+	    border: _react2['default'].PropTypes.bool,
+	    className: _react2['default'].PropTypes.string,
+	    fixedWidth: _react2['default'].PropTypes.bool,
+	    flip: _react2['default'].PropTypes.oneOf(['horizontal', 'vertical']),
+	    inverse: _react2['default'].PropTypes.bool,
+	    name: _react2['default'].PropTypes.string.isRequired,
+	    pulse: _react2['default'].PropTypes.bool,
+	    rotate: _react2['default'].PropTypes.oneOf([90, 180, 270]),
+	    size: _react2['default'].PropTypes.oneOf(['lg', '2x', '3x', '4x', '5x']),
+	    spin: _react2['default'].PropTypes.bool,
+	    stack: _react2['default'].PropTypes.oneOf(['1x', '2x'])
+	  },
+
+	  render: function render() {
+	    var className = 'fa fa-' + this.props.name;
+
+	    if (this.props.size) {
+	      className += ' fa-' + this.props.size;
+	    }
+
+	    if (this.props.spin) {
+	      className += ' fa-spin';
+	    }
+
+	    if (this.props.pulse) {
+	      className += ' fa-pulse';
+	    }
+
+	    if (this.props.border) {
+	      className += ' fa-border';
+	    }
+
+	    if (this.props.fixedWidth) {
+	      className += ' fa-fw';
+	    }
+
+	    if (this.props.inverse) {
+	      className += ' fa-inverse';
+	    }
+
+	    if (this.props.flip) {
+	      className += ' fa-flip-' + this.props.flip;
+	    }
+
+	    if (this.props.rotate) {
+	      className += ' fa-rotate-' + this.props.rotate;
+	    }
+
+	    if (this.props.stack) {
+	      className += ' fa-stack-' + this.props.stack;
+	    }
+
+	    if (this.props.className) {
+	      className += ' ' + this.props.className;
+	    }
+
+	    return _react2['default'].createElement('span', _extends({}, this.props, {
+	      className: className
+	    }));
+	  }
+	});
+	module.exports = exports['default'];
+
+/***/ },
+/* 296 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -32240,15 +32411,15 @@
 
 	var _reactDom = __webpack_require__(231);
 
-	var _App = __webpack_require__(289);
+	var _App = __webpack_require__(290);
 
 	var _App2 = _interopRequireDefault(_App);
 
-	var _LoginPage = __webpack_require__(293);
+	var _LoginPage = __webpack_require__(294);
 
 	var _LoginPage2 = _interopRequireDefault(_LoginPage);
 
-	var _HomePage = __webpack_require__(292);
+	var _HomePage = __webpack_require__(293);
 
 	var _HomePage2 = _interopRequireDefault(_HomePage);
 

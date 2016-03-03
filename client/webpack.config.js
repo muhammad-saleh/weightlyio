@@ -28,7 +28,7 @@ module.exports = {
                 loader: ExtractTextPlugin.extract('css!sass')
             },
             {
-                test: /\.(png|woff|woff2|eot|ttf|svg)$/,
+                test: /\.(png|woff|woff2|eot|otf|ttf|svg)$/,
                 loader: 'url-loader?limit=100000'
             }
         ],

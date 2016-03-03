@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, IndexRoute, Route } from 'react-router';
 import { browserHistory } from 'react-router';
-// import createBrowserHistory from 'history/lib/createBrowserHistory';
+import '../css/style.scss';
 
 import App from './components/App';
 import Routes from './Routes';
