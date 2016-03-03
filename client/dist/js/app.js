@@ -32246,6 +32246,8 @@
 
 	var _LoginPage = __webpack_require__(293);
 
+	var _LoginPage2 = _interopRequireDefault(_LoginPage);
+
 	var _HomePage = __webpack_require__(292);
 
 	var _HomePage2 = _interopRequireDefault(_HomePage);
@@ -32255,10 +32257,9 @@
 	exports.default = _react2.default.createElement(
 	  _reactRouter.Route,
 	  { path: '/', component: _App2.default },
-	  _react2.default.createElement(_reactRouter.IndexRoute, { component: _LoginPage.LoginPage }),
-	  _react2.default.createElement(_reactRouter.Route, { path: 'login', component: _HomePage2.default })
+	  _react2.default.createElement(_reactRouter.IndexRoute, { component: _HomePage2.default }),
+	  _react2.default.createElement(_reactRouter.Route, { path: 'login', component: _LoginPage2.default })
 	);
-	// import ContactPage from './components/ContactPage';
 
 /***/ }
 /******/ ]);

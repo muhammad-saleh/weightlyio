@@ -4,7 +4,7 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 module.exports = {
     entry: [
         "webpack-dev-server/client?http://localhost:1111",
-        "./src/js/app.js"
+        "./src/js/main.js"
     ],
     output: {
         path: "./dist/js/",
@@ -38,6 +38,6 @@ module.exports = {
         new ExtractTextPlugin('../../dist/css/style.css', {
             allChunks: true
         }),
-        new webpack.optimize.UglifyJsPlugin({minimize: true})
+        // new webpack.optimize.UglifyJsPlugin({minimize: false})
     ]
 }
