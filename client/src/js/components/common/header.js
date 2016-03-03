@@ -1,6 +1,9 @@
 "use strict";
 
 import React from 'react';
+import { Router, Route, Link, IndexRoute } from 'react-router';
+import HomePage from '../HomePage';
+import LoginPage from '../LoginPage';
 
 export default class Header extends React.Component {
     render() {
@@ -8,9 +11,8 @@ export default class Header extends React.Component {
             <header>
                 <nav>
                     <ul>
-                        <li><a href="/">Home</a></li>
-                        <li><a href="/login">Login</a></li>
-                        <li><a href="/signup">Signup</a></li>
+                        <li><Link to={HomePage.path}>Home</Link></li>
+                        <li><Link to={LoginPage.path}>Login</Link></li>
                     </ul>
                 </nav>
             </header>

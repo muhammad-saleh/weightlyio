@@ -12,4 +12,6 @@ class App extends React.Component {
     }
 }
 
+App.path = '/';
+
 export default App
