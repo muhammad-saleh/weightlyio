@@ -8,4 +8,4 @@ class HomePage extends React.Component {
 }
 HomePage.path = '/';
 
-export default HomePage
+export default HomePage;
