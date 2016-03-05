@@ -13,6 +13,7 @@ export default class Header extends React.Component {
                 <div className="title">
                     <h1>Weightly</h1>
                     <h3>Your way to healthier life</h3>
+                    <h1>{this.props.weight}</h1>
                 </div>
 
                 <Nav />
