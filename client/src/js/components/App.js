@@ -1,14 +1,32 @@
 'use strict';
 
 import React from 'react';
-import Header from './common/header'
+import Header from './common/header';
+import AppActions from '../actions/AppActions';
+import AppStore from '../stores/AppStore';
 
 class App extends React.Component {
+
+    componentWillMount() {
+        const Component = this;
+        AppActions.getWeight();
+        
+        Component.state = {
+            weight: []
+        }
+
+        AppStore.addChangeListener(function() {
+            Component.setState({weight: AppStore.getWeight()});
+        });
+    }
+
     render() {
-        return (<div>
-                <Header />
+        return (
+            <div>
+                <Header weight={this.state.weight}/>
                 {this.props.children}
-                </div>)
+            </div>
+        )
     }
 }
 
