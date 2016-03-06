@@ -7,8 +7,9 @@ import ActionTypes from '../constants/ActionTypes';
 import Events from 'events';
 
 const CHANGE_EVENT = 'change';
-let _weight = [];
 let _user;
+let isLoading = true;
+let isError = null;
 
 class AppStore extends Events.EventEmitter {
 
@@ -21,32 +22,37 @@ class AppStore extends Events.EventEmitter {
 
         switch (action.actionType) {
 
-        case ActionTypes.GET_WEIGHT_SUCCESS:
-            _weight = action.weight;
-            this.emitChange();
+        case ActionTypes.GET_USER: this.getUserInit(action);
             break;
-
-        case ActionTypes.GET_USER_SUCCESS:
-            _user = action.user;
-            this.emitChange();
+        case ActionTypes.GET_USER_SUCCESS: this.getUserSuccess(action);
             break;
-
-        case ActionTypes.TODO_DESTROY:
-            // this.destroy(action.id);
-            this.emitChange();
+        case ActionTypes.GET_USER_ERROR: this.getUserError(action);
             break;
-
         }
 
         return true; // No errors. Needed by promise in Dispatcher.
     }
 
-    getWeight() {
-        return _weight;
-    }
-
     getUser() {
         return _user;
+    }
+    getUserInit(action) {
+        isLoading = true;
+        this.emitChange();
+    }
+    getUserSuccess(action) {
+        isLoading = false;
+        _user = action.user;
+        this.emitChange();
+    }
+    getUserError(action) {
+        isLoading = false;
+        _user = undefined;
+        this.emitChange();
+    }
+
+    getLoadingState() {
+        return isLoading;
     }
 
     addChangeListener(callback) {
@@ -59,6 +65,14 @@ class AppStore extends Events.EventEmitter {
 
     emitChange() {
         this.emit(CHANGE_EVENT);
+    }
+
+    isAuth(){
+        if(_user){
+            return true
+        }else {
+            return false
+        }
     }
 
 
