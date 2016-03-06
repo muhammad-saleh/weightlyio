@@ -9,13 +9,15 @@ class App extends React.Component {
 
     componentWillMount() {
         const Component = this;
+        AppActions.getUser();
         AppActions.getWeight();
-        
+
         Component.state = {
             weight: []
         }
 
         AppStore.addChangeListener(function() {
+            Component.setState({user: AppStore.getUser()});
             Component.setState({weight: AppStore.getWeight()});
         });
     }
@@ -23,7 +25,7 @@ class App extends React.Component {
     render() {
         return (
             <div>
-                <Header weight={this.state.weight}/>
+                <Header weight={this.state.weight} user={this.state.user}/>
                 {this.props.children}
             </div>
         )

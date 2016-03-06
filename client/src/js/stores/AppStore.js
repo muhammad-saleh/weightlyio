@@ -8,6 +8,7 @@ import Events from 'events';
 
 const CHANGE_EVENT = 'change';
 let _weight = [];
+let _user;
 
 class AppStore extends Events.EventEmitter {
 
@@ -20,10 +21,14 @@ class AppStore extends Events.EventEmitter {
 
         switch (action.actionType) {
 
-        case ActionTypes.GET_WEIGHT:
+        case ActionTypes.GET_WEIGHT_SUCCESS:
             _weight = action.weight;
             this.emitChange();
+            break;
 
+        case ActionTypes.GET_USER_SUCCESS:
+            _user = action.user;
+            this.emitChange();
             break;
 
         case ActionTypes.TODO_DESTROY:
@@ -38,6 +43,10 @@ class AppStore extends Events.EventEmitter {
 
     getWeight() {
         return _weight;
+    }
+
+    getUser() {
+        return _user;
     }
 
     addChangeListener(callback) {
