@@ -3,32 +3,41 @@
 import React from 'react';
 import Header from './common/header';
 import AppActions from '../actions/AppActions';
-import AppStore from '../stores/AppStore';
+import UserStore from '../stores/UserStore';
 
 class App extends React.Component {
 
     componentWillMount() {
         const Component = this;
         AppActions.getUser();
-        AppActions.getWeight();
 
         Component.state = {
-            weight: []
+            isLoading: UserStore.getLoadingState()
         }
 
-        AppStore.addChangeListener(function() {
-            Component.setState({user: AppStore.getUser()});
-            Component.setState({weight: AppStore.getWeight()});
+        UserStore.addChangeListener(function() {
+            Component.setState({user: UserStore.getUser()});
+            Component.setState({isLoading: UserStore.getLoadingState()});
         });
     }
 
     render() {
-        return (
-            <div>
-                <Header weight={this.state.weight} user={this.state.user}/>
-                {this.props.children}
-            </div>
-        )
+        if (this.state.user) {
+            return (
+                <div user={this.state.user} isLoading={this.state.isLoading}>
+                    <Header/>
+                    {this.props.children}
+                </div>
+            )
+        } else if (!this.state.user && this.state.isLoading) {
+            return (
+                <h1>Loading...</h1>
+            )
+        } else if (!this.state.user && !this.state.isLoading) {
+            return (
+                <h1>Not authorized</h1>
+            )
+        }
     }
 }
 
