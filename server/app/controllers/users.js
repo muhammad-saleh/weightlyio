@@ -45,6 +45,23 @@ exports.show = function (req, res) {
   });
 };
 
+
+/**
+ *  get profile
+ */
+
+exports.getUser = function (req, res) {
+    const _id = req.user._id;
+    User.findById(_id,function(err, user){
+        let returned_user = {
+            email: user.email,
+            data: user[user.provider]
+        };
+        // returned_user.data.provider = user.provider || 'local';
+        res.send(returned_user);
+    })
+};
+
 exports.signin = function () {};
 
 /**
@@ -80,7 +97,7 @@ exports.signup = function (req, res) {
 
 exports.logout = function (req, res) {
   req.logout();
-  res.redirect('/login');
+  res.send();
 };
 
 /**
