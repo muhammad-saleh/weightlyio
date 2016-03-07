@@ -4,6 +4,7 @@ import React from 'react';
 
 import Dispatcher from '../dispatcher/Dispatcher';
 import ActionTypes from '../constants/ActionTypes';
+import UserStore from './UserStore';
 import Events from 'events';
 
 const CHANGE_EVENT = 'change';
@@ -11,10 +12,11 @@ let _weight = [];
 let isLoading = true;
 let isError = null;
 
-class AppStore extends Events.EventEmitter {
+class WeightStore extends Events.EventEmitter {
 
     constructor(props) {
         super(props);
+        let Store = this;
         this.dispatcherIndex = Dispatcher.register(this.handleAction.bind(this));
     }
 
@@ -78,4 +80,4 @@ class AppStore extends Events.EventEmitter {
 
 }
 
-export default new AppStore();
+export default new WeightStore();

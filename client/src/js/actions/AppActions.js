@@ -13,7 +13,7 @@ class AppActions {
     }
 
     getWeight() {
-        Dispatcher.dispatch({actionType: ActionTypes.GET_WEIGHT})
+        Dispatcher.dispatch({actionType: ActionTypes.GET_WEIGHT});
         $.ajax({
             method: "GET",
             url: "http://localhost:3000/weight",
@@ -22,7 +22,7 @@ class AppActions {
             },
             crossDomain: true
         }).done(function(weight) {
-            Dispatcher.dispatch({actionType: ActionTypes.GET_WEIGHT_SUCCESS, weight: JSON.stringify(weight)})
+            Dispatcher.dispatch({actionType: ActionTypes.GET_WEIGHT_SUCCESS, weight: weight})
         }).error(function(e) {
             Dispatcher.dispatch({actionType: ActionTypes.GET_WEIGHT_ERROR, error:e});
         });
