@@ -1,6 +1,7 @@
 header {
     background: #2490df;
     color: #FFF;
+    position: relative;
     .title {
         text-align: center;
         h1 {
@@ -12,14 +13,6 @@ header {
         }
     }
     .navTrigger {
-        background: none;
-        border: 0px solid;
-        outline: 0;
-        i {
-            font-size: 25px;
-            position: absolute;
-            left: 10px;
-            top: 10px;
-        }
+        
     }
 }

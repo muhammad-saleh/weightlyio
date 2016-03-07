@@ -1,0 +1,53 @@
+nav {
+    background: #666666;
+    width: 250px;
+    padding: 10px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -ms-transition: all 0.5s;
+    transition: all 0.5s;
+    -webkit-transform: translateX(-250px);
+    -moz-transform: translateX(-250px);
+    -ms-transform: translateX(-250px);
+    transform: translateX(-250px);
+    z-index: 1;
+    ul {
+        padding: 0;
+        margin: 0;
+        a {
+            color: #FFF;
+            padding: 10px 15px;
+            display: block;
+            list-style: none;
+            &:hover {
+                background: lighten(#666,10%);
+                text-decoration: none;
+                color: #2490df;
+                cursor: pointer;
+            }
+        }
+    }
+    .navTrigger {
+        position: absolute;
+        top: 5px;
+        left: 250px;
+        background: none;
+        border: 0px solid;
+        outline: 0;
+        i {
+            font-size: 25px;
+            color:#FFF;
+        }
+    }
+
+}
+
+.navOpened nav {
+    -webkit-transform: translateX(0px);
+    -moz-transform: translateX(0px);
+    -ms-transform: translateX(0px);
+    transform: translateX(0px);
+}
