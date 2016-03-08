@@ -3,6 +3,7 @@
 import React from 'react';
 
 import Dispatcher from '../dispatcher/Dispatcher';
+import AppActions from '../actions/AppActions';
 import ActionTypes from '../constants/ActionTypes';
 import UserStore from './UserStore';
 import Events from 'events';
@@ -24,19 +25,26 @@ class WeightStore extends Events.EventEmitter {
 
         switch (action.actionType) {
 
-        case ActionTypes.GET_WEIGHT: this.getWeightInit(action);
-            break;
-        case ActionTypes.GET_WEIGHT_SUCCESS: this.getWeightSuccess(action);
-            break;
-        case ActionTypes.GET_WEIGHT_ERROR: this.getWeightError(action);
-            break;
+            case ActionTypes.GET_WEIGHT:
+                this.getWeightInit(action);
+                break;
+            case ActionTypes.GET_WEIGHT_SUCCESS:
+                this.getWeightSuccess(action);
+                break;
+            case ActionTypes.GET_WEIGHT_ERROR:
+                this.getWeightError(action);
+                break;
         }
 
         return true; // No errors. Needed by promise in Dispatcher.
     }
 
     getWeight() {
-        return _weight;
+        if (_weight !== []) {
+            return _weight;
+        } else {
+            AppActions.getWeight()
+        }
     }
     getWeightInit(action) {
         isLoading = true;
@@ -69,14 +77,13 @@ class WeightStore extends Events.EventEmitter {
         this.emit(CHANGE_EVENT);
     }
 
-    isAuth(){
-        if(_user){
+    isAuth() {
+        if (_user) {
             return true
-        }else {
+        } else {
             return false
         }
     }
-
 
 }
 
