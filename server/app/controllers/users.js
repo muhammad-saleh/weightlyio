@@ -55,6 +55,7 @@ exports.getUser = function (req, res) {
     User.findById(_id,function(err, user){
         let returned_user = {
             email: user.email,
+            provider: user.provider,
             data: user[user.provider]
         };
         // returned_user.data.provider = user.provider || 'local';

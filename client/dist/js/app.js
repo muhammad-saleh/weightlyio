@@ -7420,7 +7420,7 @@
 
 	var _App2 = _interopRequireDefault(_App);
 
-	var _Routes = __webpack_require__(418);
+	var _Routes = __webpack_require__(420);
 
 	var _Routes2 = _interopRequireDefault(_Routes);
 
@@ -32009,7 +32009,7 @@
 
 	var _reactFontawesome2 = _interopRequireDefault(_reactFontawesome);
 
-	var _classnames = __webpack_require__(417);
+	var _classnames = __webpack_require__(419);
 
 	var _classnames2 = _interopRequireDefault(_classnames);
 
@@ -32071,12 +32071,12 @@
 	            } else {
 	                return _react2.default.createElement(
 	                    'div',
-	                    { user: this.state.user, isLoading: this.state.isLoading, className: 'contentContainer ' + navClass },
+	                    { user: this.state.user, isLoading: this.state.isLoading, className: navClass },
 	                    _react2.default.createElement(_nav2.default, { user: this.state.user, toggleNav: this.toggleNav.bind(this) }),
 	                    _react2.default.createElement(_header2.default, { user: this.state.user, isLoading: this.state.isLoading }),
 	                    _react2.default.createElement(
 	                        'div',
-	                        { user: this.state.user },
+	                        { className: 'contentContainer', user: this.state.user },
 	                        childrenWithProps
 	                    )
 	                );
@@ -33093,15 +33093,15 @@
 
 	var _HomePage2 = _interopRequireDefault(_HomePage);
 
-	var _LoginPage = __webpack_require__(414);
+	var _LoginPage = __webpack_require__(416);
 
 	var _LoginPage2 = _interopRequireDefault(_LoginPage);
 
-	var _NavLoggedInItems = __webpack_require__(415);
+	var _NavLoggedInItems = __webpack_require__(417);
 
 	var _NavLoggedInItems2 = _interopRequireDefault(_NavLoggedInItems);
 
-	var _NavNotLoggedInItems = __webpack_require__(416);
+	var _NavNotLoggedInItems = __webpack_require__(418);
 
 	var _NavNotLoggedInItems2 = _interopRequireDefault(_NavNotLoggedInItems);
 
@@ -33185,6 +33185,10 @@
 
 	var _card2 = _interopRequireDefault(_card);
 
+	var _UserTile = __webpack_require__(414);
+
+	var _UserTile2 = _interopRequireDefault(_UserTile);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -33218,16 +33222,16 @@
 	                    { className: 'row' },
 	                    _react2.default.createElement(
 	                        'div',
-	                        { className: 'col-xs-6' },
+	                        { className: 'col-md-6' },
 	                        _react2.default.createElement(
 	                            _card2.default,
-	                            { cssClass: 'chartComponent', cardIcon: 'tachometer', cardTitle: 'Weight Change Chart' },
-	                            _react2.default.createElement(_WeightCharts2.default, null)
+	                            { cssClass: 'userComponent' },
+	                            _react2.default.createElement(_UserTile2.default, null)
 	                        )
 	                    ),
 	                    _react2.default.createElement(
 	                        'div',
-	                        { className: 'col-xs-6' },
+	                        { className: 'col-md-6' },
 	                        _react2.default.createElement(
 	                            _card2.default,
 	                            { cssClass: 'chartComponent', cardIcon: 'tachometer', cardTitle: 'Weight Change Chart' },
@@ -50430,23 +50434,35 @@
 	        key: 'render',
 	        value: function render() {
 	            var cardIcon = '';
+	            var cardTitle = '';
+	            var cardHeader = '';
+
 	            if (this.props.cardIcon && this.props.cardIcon.trim().length > 0) {
 	                cardIcon = _react2.default.createElement(_reactFontawesome2.default, { name: this.props.cardIcon });
 	            }
+
+	            if (this.props.cardTitle && this.props.cardTitle.trim().length > 0) {
+	                cardTitle = _react2.default.createElement(
+	                    'h4',
+	                    null,
+	                    cardIcon,
+	                    ' ',
+	                    this.props.cardTitle
+	                );
+	            }
+
+	            if (cardTitle !== '') {
+	                cardHeader = _react2.default.createElement(
+	                    'div',
+	                    { className: 'cardTitle' },
+	                    cardTitle
+	                );
+	            }
+
 	            return _react2.default.createElement(
 	                'div',
 	                { className: this.props.cssClass + ' card' },
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: 'cardTitle' },
-	                    _react2.default.createElement(
-	                        'h4',
-	                        null,
-	                        cardIcon,
-	                        ' ',
-	                        this.props.cardTitle
-	                    )
-	                ),
+	                cardHeader,
 	                this.props.children
 	            );
 	        }
@@ -50459,6 +50475,137 @@
 
 /***/ },
 /* 414 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(75);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _UserStore = __webpack_require__(298);
+
+	var _UserStore2 = _interopRequireDefault(_UserStore);
+
+	var _Constants = __webpack_require__(415);
+
+	var _Constants2 = _interopRequireDefault(_Constants);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var UserTile = function (_React$Component) {
+	    _inherits(UserTile, _React$Component);
+
+	    function UserTile() {
+	        _classCallCheck(this, UserTile);
+
+	        return _possibleConstructorReturn(this, Object.getPrototypeOf(UserTile).apply(this, arguments));
+	    }
+
+	    _createClass(UserTile, [{
+	        key: 'componentWillMount',
+	        value: function componentWillMount() {
+	            this.state = {
+	                user: _UserStore2.default.getUser()
+	            };
+	        }
+	    }, {
+	        key: 'profilePic',
+	        value: function profilePic(usr) {
+	            var user = JSON.parse(usr);
+	            if (usr) {
+	                switch (user.provider) {
+	                    case 'facebook':
+	                        return 'http://graph.facebook.com/' + user.data.id + '/picture';
+	                        break;
+	                    default:
+	                        return 'http://placehold.it/50x50';
+
+	                }
+	            }
+	        }
+	    }, {
+	        key: 'userName',
+	        value: function userName(usr) {
+	            var user = JSON.parse(usr);
+	            if (usr) {
+	                switch (user.provider) {
+	                    case 'facebook':
+	                        return user.data.first_name + ' ' + user.data.last_name;
+	                        break;
+	                    default:
+	                        return 'http://placehold.it/50x50';
+
+	                }
+	            }
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(
+	                'div',
+	                { className: 'row' },
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'col-xs-2' },
+	                    _react2.default.createElement('img', { src: this.profilePic(this.state.user), alt: 'User Image', className: 'img-circle' })
+	                ),
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'col-xs-10' },
+	                    _react2.default.createElement(
+	                        'div',
+	                        null,
+	                        this.userName(this.state.user)
+	                    ),
+	                    _react2.default.createElement(
+	                        'div',
+	                        null,
+	                        _react2.default.createElement(
+	                            'a',
+	                            { className: 'btn btn-primary', href: _Constants2.default.LOGOUT_URL },
+	                            'Logout'
+	                        )
+	                    )
+	                )
+	            );
+	        }
+	    }]);
+
+	    return UserTile;
+	}(_react2.default.Component);
+
+	exports.default = UserTile;
+
+/***/ },
+/* 415 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	var Constants = {
+	    "LOGOUT_URL": "http://localhost:3000/logout"
+	};
+
+	exports.default = Constants;
+
+/***/ },
+/* 416 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -50509,7 +50656,7 @@
 	exports.default = LoginPage;
 
 /***/ },
-/* 415 */
+/* 417 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -50530,7 +50677,7 @@
 
 	var _HomePage2 = _interopRequireDefault(_HomePage);
 
-	var _LoginPage = __webpack_require__(414);
+	var _LoginPage = __webpack_require__(416);
 
 	var _LoginPage2 = _interopRequireDefault(_LoginPage);
 
@@ -50675,7 +50822,7 @@
 	exports.default = NavLoggedInItems;
 
 /***/ },
-/* 416 */
+/* 418 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -50696,7 +50843,7 @@
 
 	var _HomePage2 = _interopRequireDefault(_HomePage);
 
-	var _LoginPage = __webpack_require__(414);
+	var _LoginPage = __webpack_require__(416);
 
 	var _LoginPage2 = _interopRequireDefault(_LoginPage);
 
@@ -50841,7 +50988,7 @@
 	exports.default = NavNotLoggedInItems;
 
 /***/ },
-/* 417 */
+/* 419 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -50895,7 +51042,7 @@
 
 
 /***/ },
-/* 418 */
+/* 420 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -50916,7 +51063,7 @@
 
 	var _App2 = _interopRequireDefault(_App);
 
-	var _LoginPage = __webpack_require__(414);
+	var _LoginPage = __webpack_require__(416);
 
 	var _LoginPage2 = _interopRequireDefault(_LoginPage);
 
