@@ -11,7 +11,10 @@ module.exports = function (req, res) {
         if (err) {
             res.send(err);
         } else {
-            res.json(weights)
+            var nWeights = weights.sort(function(a,b){
+                return new Date(b.date) - new Date(a.date);
+            });
+            res.json(nWeights)
         }
     })
 }
