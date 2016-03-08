@@ -32056,7 +32056,12 @@
 	    }, {
 	        key: 'render',
 	        value: function render() {
+	            var _this2 = this;
+
 	            var btnClass = (0, _classnames2.default)({ 'navOpened': this.state.navOpened });
+	            var childrenWithProps = _react2.default.Children.map(this.props.children, function (child) {
+	                return _react2.default.cloneElement(child, { user: _this2.state.user });
+	            });
 	            if (!this.state.user && this.state.isLoading) {
 	                return _react2.default.createElement(
 	                    'h1',
@@ -32069,7 +32074,11 @@
 	                    { user: this.state.user, isLoading: this.state.isLoading, className: btnClass },
 	                    _react2.default.createElement(_nav2.default, { user: this.state.user, toggleNav: this.toggleNav.bind(this) }),
 	                    _react2.default.createElement(_header2.default, { user: this.state.user, isLoading: this.state.isLoading }),
-	                    this.props.children
+	                    _react2.default.createElement(
+	                        'div',
+	                        { user: this.state.user },
+	                        childrenWithProps
+	                    )
 	                );
 	            }
 	        }
@@ -32219,7 +32228,7 @@
 	                },
 	                crossDomain: true
 	            }).done(function (weight) {
-	                _Dispatcher2.default.dispatch({ actionType: _ActionTypes2.default.GET_WEIGHT_SUCCESS, weight: JSON.stringify(weight) });
+	                _Dispatcher2.default.dispatch({ actionType: _ActionTypes2.default.GET_WEIGHT_SUCCESS, weight: weight });
 	            }).error(function (e) {
 	                _Dispatcher2.default.dispatch({ actionType: _ActionTypes2.default.GET_WEIGHT_ERROR, error: e });
 	            });
@@ -33160,6 +33169,18 @@
 
 	var _WeightCharts2 = _interopRequireDefault(_WeightCharts);
 
+	var _AppActions = __webpack_require__(292);
+
+	var _AppActions2 = _interopRequireDefault(_AppActions);
+
+	var _WeightStore = __webpack_require__(312);
+
+	var _WeightStore2 = _interopRequireDefault(_WeightStore);
+
+	var _UserStore = __webpack_require__(298);
+
+	var _UserStore2 = _interopRequireDefault(_UserStore);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -33183,12 +33204,12 @@
 	            return _react2.default.createElement(
 	                'div',
 	                null,
-	                _react2.default.createElement(_WeightCharts2.default, null),
 	                _react2.default.createElement(
 	                    'h1',
 	                    null,
 	                    'Home Page'
-	                )
+	                ),
+	                _react2.default.createElement(_WeightCharts2.default, null)
 	            );
 	        }
 	    }]);
@@ -33226,6 +33247,10 @@
 
 	var _WeightStore2 = _interopRequireDefault(_WeightStore);
 
+	var _UserStore = __webpack_require__(298);
+
+	var _UserStore2 = _interopRequireDefault(_UserStore);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -33246,18 +33271,56 @@
 	    _createClass(WeightCharts, [{
 	        key: 'componentWillMount',
 	        value: function componentWillMount() {
+	            this.state = {
+	                weight: []
+	            };
+	        }
+	    }, {
+	        key: 'componentDidMount',
+	        value: function componentDidMount() {
 	            var Component = this;
-	            _AppActions2.default.getWeght();
+	            window.setTimeout(function () {
+	                _AppActions2.default.getWeight();
+	            }, 0);
 
 	            _WeightStore2.default.addChangeListener(function () {
-	                console.log(_WeightStore2.default.getWeight());
 	                Component.setState({ weight: _WeightStore2.default.getWeight() });
 	            });
 	        }
 	    }, {
+	        key: 'extractWeight',
+	        value: function extractWeight(arr) {
+	            if (Array.isArray(arr)) {
+	                var weightArray = arr.map(function (obj) {
+	                    return obj.weight;
+	                });
+	                return weightArray;
+	            } else {
+	                return [];
+	            }
+	        }
+	    }, {
 	        key: 'render',
 	        value: function render() {
-	            return _react2.default.createElement(_reactChartjs.LineChart, { data: chartData, options: chartOptions, width: '600', height: '250' });
+	            var data = {
+	                labels: ["January", "February", "March", "April", "May", "June", "July"],
+	                datasets: [{
+	                    label: "My Weight",
+	                    fillColor: "rgba(151,187,205,0.5)",
+	                    strokeColor: "rgba(151,187,205,0.8)",
+	                    highlightFill: "rgba(151,187,205,0.75)",
+	                    highlightStroke: "rgba(151,187,205,1)",
+	                    data: this.extractWeight(this.state.weight)
+	                }]
+	            };
+
+	            var options = { scaleShowGridLines: true, scaleGridLineColor: "rgba(0,0,0,.05)", scaleGridLineWidth: 1, scaleShowHorizontalLines: true, scaleShowVerticalLines: true, bezierCurve: true, bezierCurveTension: 0.4, pointDot: true, pointDotRadius: 4, pointDotStrokeWidth: 1, pointHitDetectionRadius: 20, datasetStroke: true, datasetStrokeWidth: 2, datasetFill: true, responsive: true, legendTemplate: "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].strokeColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>" };
+
+	            return _react2.default.createElement(
+	                'div',
+	                null,
+	                _react2.default.createElement(_reactChartjs.Line, { data: data, options: options, width: '1400', height: '250' })
+	            );
 	        }
 	    }]);
 
@@ -36976,6 +37039,10 @@
 
 	var _ActionTypes2 = _interopRequireDefault(_ActionTypes);
 
+	var _UserStore = __webpack_require__(298);
+
+	var _UserStore2 = _interopRequireDefault(_UserStore);
+
 	var _events = __webpack_require__(299);
 
 	var _events2 = _interopRequireDefault(_events);
@@ -36993,19 +37060,20 @@
 	var isLoading = true;
 	var isError = null;
 
-	var AppStore = function (_Events$EventEmitter) {
-	    _inherits(AppStore, _Events$EventEmitter);
+	var WeightStore = function (_Events$EventEmitter) {
+	    _inherits(WeightStore, _Events$EventEmitter);
 
-	    function AppStore(props) {
-	        _classCallCheck(this, AppStore);
+	    function WeightStore(props) {
+	        _classCallCheck(this, WeightStore);
 
-	        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(AppStore).call(this, props));
+	        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(WeightStore).call(this, props));
 
+	        var Store = _this;
 	        _this.dispatcherIndex = _Dispatcher2.default.register(_this.handleAction.bind(_this));
 	        return _this;
 	    }
 
-	    _createClass(AppStore, [{
+	    _createClass(WeightStore, [{
 	        key: 'handleAction',
 	        value: function handleAction(action) {
 
@@ -37080,10 +37148,10 @@
 	        }
 	    }]);
 
-	    return AppStore;
+	    return WeightStore;
 	}(_events2.default.EventEmitter);
 
-	exports.default = new AppStore();
+	exports.default = new WeightStore();
 
 /***/ },
 /* 313 */
