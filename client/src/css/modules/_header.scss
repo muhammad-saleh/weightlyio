@@ -1,5 +1,5 @@
 header {
-    background: #2490df;
+    background: $brand1;
     color: #FFF;
     position: relative;
     .title {
@@ -9,10 +9,8 @@ header {
             padding: 10px 0;
         }
         h3 {
-            padding-bottom: 10px;
+            padding-bottom: 30px;
+            margin-bottom: 0;
         }
-    }
-    .navTrigger {
-        
     }
 }

@@ -7903,6 +7903,10 @@ button.close {
   .hidden-print {
     display: none !important; } }
 
+body {
+  background: #F4F4F4;
+  font-family: Roboto, sans-serif; }
+
 header {
   background: #2490df;
   color: #FFF;
@@ -7913,7 +7917,8 @@ header {
       margin: 0;
       padding: 10px 0; }
     header .title h3 {
-      padding-bottom: 10px; }
+      padding-bottom: 30px;
+      margin-bottom: 0; }
 
 nav {
   background: #666666;
@@ -7960,3 +7965,15 @@ nav {
   -moz-transform: translateX(0px);
   -ms-transform: translateX(0px);
   transform: translateX(0px); }
+
+.chartComponent {
+  padding: 2%;
+  background: #d6eaf9; }
+
+.card {
+  background: #FFF;
+  margin: 20px;
+  -webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.12);
+  -moz-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.12);
+  -ms-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.12); }
