@@ -33,7 +33,7 @@ class App extends React.Component {
     }
 
     render() {
-        var btnClass = classNames({'navOpened': this.state.navOpened});
+        var navClass = classNames({'navOpened': this.state.navOpened});
         var childrenWithProps = React.Children.map(this.props.children, (child) => {
             return React.cloneElement(child, { user: this.state.user });
         });
@@ -43,10 +43,10 @@ class App extends React.Component {
             )
         } else {
             return (
-                <div user={this.state.user} isLoading={this.state.isLoading} className={btnClass}>
+                <div user={this.state.user} isLoading={this.state.isLoading} className={navClass}>
                     <Nav user={this.state.user} toggleNav={this.toggleNav.bind(this)}/>
                     <Header user={this.state.user} isLoading={this.state.isLoading} />
-                    <div user={this.state.user}>
+                    <div className="contentContainer" user={this.state.user}>
                         {childrenWithProps}
                     </div>
                 </div>
