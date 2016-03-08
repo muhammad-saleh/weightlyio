@@ -4,6 +4,8 @@ import {Line} from 'react-chartjs';
 import AppActions from '../actions/AppActions';
 import WeightStore from '../stores/WeightStore';
 import UserStore from '../stores/UserStore';
+import moment from 'moment';
+import FontAwesome from 'react-fontawesome';
 
 class WeightCharts extends React.Component {
     componentWillMount() {
@@ -34,9 +36,20 @@ class WeightCharts extends React.Component {
         }
     }
 
+    extractDates(arr) {
+        if(Array.isArray(arr)){
+            var datesArray = arr.map(function(obj){
+                return moment(obj.date).format("MMM DD YYYY");
+            });
+            return datesArray;
+        }else {
+            return []
+        }
+    }
+
     render() {
         var data = {
-            labels: ["January", "February", "March", "April", "May", "June", "July"],
+            labels: this.extractDates(this.state.weight),
             datasets: [
                 {
                     label: "My Weight",
