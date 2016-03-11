@@ -1,47 +1,49 @@
 'use strict';
 
 import React from 'react';
-import Dispatcher from '../dispatcher/Dispatcher';
+import alt from '../alt';
 import ActionTypes from '../constants/ActionTypes';
+import UserSource from '../sources/UserSource';
+import WeightSource from '../sources/WeightSource';
 
 class AppActions {
+    constructor() {
+
+    }
+
     setNewGoal(goal) {
         //TODO: AJAX Call
 
         //In AJAX Succes
-        Dispatcher.dispatch({actionType: ActionTypes.ADD_GOAL, goal})
+        this.actions.addGoal(goal);
     }
 
     getWeight() {
-        Dispatcher.dispatch({actionType: ActionTypes.GET_WEIGHT});
-        $.ajax({
-            method: "GET",
-            url: "http://localhost:3000/weight",
-            xhrFields: {
-                withCredentials: true
-            },
-            crossDomain: true
-        }).done(function(weight) {
-            Dispatcher.dispatch({actionType: ActionTypes.GET_WEIGHT_SUCCESS, weight: weight})
-        }).error(function(e) {
-            Dispatcher.dispatch({actionType: ActionTypes.GET_WEIGHT_ERROR, error:e});
-        });
+        return (dispatch) => {
+            // dispatch();
+            WeightSource.fetch().then((weight)=>{
+                this.getWeightSuccess(weight);
+            })
+        }
     }
     getUser() {
-        Dispatcher.dispatch({actionType: ActionTypes.GET_USER});
-        $.ajax({
-            method: "GET",
-            url: "http://localhost:3000/user",
-            xhrFields: {
-                withCredentials: true
-            },
-            crossDomain: true
-        }).done(function(user) {
-            Dispatcher.dispatch({actionType: ActionTypes.GET_USER_SUCCESS, user: JSON.stringify(user)})
-        }).error(function(e) {
-            Dispatcher.dispatch({actionType: ActionTypes.GET_USER_ERROR, error:e});
-        });
+        return (dispatch) => {
+            dispatch();
+            UserSource.fetch().then((user)=>{
+                this.getUserSuccess(user);
+            })
+        }
+
     }
+
+    getUserSuccess(user) {
+        return user;
+    }
+
+    getWeightSuccess(weight) {
+        return weight;
+    }
+
 }
 
-export default new AppActions;
+export default alt.createActions(AppActions);

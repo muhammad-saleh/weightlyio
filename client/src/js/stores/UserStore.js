@@ -2,73 +2,49 @@
 
 import React from 'react';
 
-import Dispatcher from '../dispatcher/Dispatcher';
+import alt from '../alt';
 import ActionTypes from '../constants/ActionTypes';
-import Events from 'events';
+import AppActions from '../actions/AppActions';
 
-const CHANGE_EVENT = 'change';
-let _user;
-let isLoading = true;
-let isError = null;
-
-class AppStore extends Events.EventEmitter {
+class UserStore {
 
     constructor(props) {
-        super(props);
-        this.dispatcherIndex = Dispatcher.register(this.handleAction.bind(this));
+        this.user = null;
+        this.isLoading = true;
+        this.isError = null;
+
+        this.bindListeners({
+            getUserSuccess: AppActions.getUserSuccess,
+        });
+
     }
 
-    handleAction(action) {
-
-        switch (action.actionType) {
-
-        case ActionTypes.GET_USER: this.getUserInit(action);
-            break;
-        case ActionTypes.GET_USER_SUCCESS: this.getUserSuccess(action);
-            break;
-        case ActionTypes.GET_USER_ERROR: this.getUserError(action);
-            break;
-        }
-
-        return true; // No errors. Needed by promise in Dispatcher.
+    getUser(user) {
+        return this.user;
     }
-
-    getUser() {
-        return _user;
+    onGetUser(action) {
+        this.loading = true;
     }
-    getUserInit(action) {
-        isLoading = true;
-        this.emitChange();
-    }
-    getUserSuccess(action) {
-        isLoading = false;
-        _user = action.user;
-        this.emitChange();
+    getUserSuccess(user) {
+        this.isLoading = false;
+        this.user = user;
     }
     getUserError(action) {
-        isLoading = false;
-        _user = undefined;
-        this.emitChange();
+        this.isLoading = false;
+        this.user = undefined;
     }
 
     getLoadingState() {
-        return isLoading;
+        return this.isLoading;
     }
 
-    addChangeListener(callback) {
-        this.on(CHANGE_EVENT, callback);
-    }
-
-    removeChangeListener(callback) {
-        this.removeListener(CHANGE_EVENT, callback);
-    }
-
-    emitChange() {
-        this.emit(CHANGE_EVENT);
+    handleUpdateLocations(locations) {
+        // console.log('store lcoations', locations)
+        this.locations = locations;
     }
 
     isAuth(){
-        if(_user){
+        if(this.user){
             return true
         }else {
             return false
@@ -78,4 +54,4 @@ class AppStore extends Events.EventEmitter {
 
 }
 
-export default new AppStore();
+export default alt.createStore(UserStore, 'UserStore');

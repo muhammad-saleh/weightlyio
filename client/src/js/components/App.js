@@ -7,21 +7,22 @@ import UserStore from '../stores/UserStore';
 import Nav from './common/nav/nav';
 import FontAwesome from 'react-fontawesome';
 import classNames from 'classnames';
+import alt from '../alt';
 
 class App extends React.Component {
 
     componentWillMount() {
-        const Component = this;
         AppActions.getUser();
+        const Component = this;
+        Component.state = UserStore.getState();
 
         Component.state = {
-            isLoading: UserStore.getLoadingState(),
+            isLoading: UserStore.getState().isLoading,
             navOpened: false
         }
 
-        UserStore.addChangeListener(function() {
-            Component.setState({user: UserStore.getUser()});
-            Component.setState({isLoading: UserStore.getLoadingState()});
+        UserStore.listen(function(state){
+            Component.setState(UserStore.getState());
         });
 
     }

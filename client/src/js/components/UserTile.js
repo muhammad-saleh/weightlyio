@@ -7,15 +7,11 @@ import Constants from '../constants/Constants';
 
 export default class UserTile extends React.Component {
     componentWillMount() {
-        this.state = {
-            user: UserStore.getUser(),
-            weight: WeightStore.getWeight()
-        }
+        this.state = UserStore.getState();
     }
 
-    profilePic(usr){
-        let user = JSON.parse(usr);
-        if(usr){
+    profilePic(user){
+        if(user){
             switch (user.provider) {
                 case 'facebook':
                     return `http://graph.facebook.com/${user.data.id}/picture`
@@ -27,9 +23,8 @@ export default class UserTile extends React.Component {
         }
     }
 
-    userName(usr){
-        let user = JSON.parse(usr);
-        if(usr){
+    userName(user){
+        if(user){
             switch (user.provider) {
                 case 'facebook':
                     return user.data.first_name + ' ' + user.data.last_name

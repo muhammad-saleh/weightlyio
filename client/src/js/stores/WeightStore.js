@@ -2,89 +2,44 @@
 
 import React from 'react';
 
-import Dispatcher from '../dispatcher/Dispatcher';
+import alt from '../alt';
 import AppActions from '../actions/AppActions';
 import ActionTypes from '../constants/ActionTypes';
 import UserStore from './UserStore';
-import Events from 'events';
 
-const CHANGE_EVENT = 'change';
-let _weight = [];
-let isLoading = true;
-let isError = null;
 
-class WeightStore extends Events.EventEmitter {
+class WeightStore {
 
     constructor(props) {
-        super(props);
-        let Store = this;
-        this.dispatcherIndex = Dispatcher.register(this.handleAction.bind(this));
-    }
+        this.weight = [];
+        this.isLoading = true;
+        this.isError = null;
 
-    handleAction(action) {
-
-        switch (action.actionType) {
-
-            case ActionTypes.GET_WEIGHT:
-                this.getWeightInit(action);
-                break;
-            case ActionTypes.GET_WEIGHT_SUCCESS:
-                this.getWeightSuccess(action);
-                break;
-            case ActionTypes.GET_WEIGHT_ERROR:
-                this.getWeightError(action);
-                break;
-        }
-
-        return true; // No errors. Needed by promise in Dispatcher.
+        this.bindListeners({
+            getWeightInit: AppActions.GET_WEIGHT,
+            getWeightSuccess: AppActions.GET_WEIGHT_SUCCESS,
+        });
     }
 
     getWeight() {
-        if (_weight !== []) {
-            return _weight;
+        if (this.weight !== []) {
+            return this.weight;
         } else {
             AppActions.getWeight()
         }
     }
-    getWeightInit(action) {
-        isLoading = true;
-        this.emitChange();
+    getWeightInit() {
+        this.isLoading = true;
     }
-    getWeightSuccess(action) {
-        isLoading = false;
-        _weight = action.weight;
-        this.emitChange();
+    getWeightSuccess(weight) {
+        this.isLoading = false;
+        this.weight = weight;
     }
-    getWeightError(action) {
-        isLoading = false;
-        _weight = undefined;
-        this.emitChange();
-    }
-
-    getLoadingState() {
-        return isLoading;
-    }
-
-    addChangeListener(callback) {
-        this.on(CHANGE_EVENT, callback);
-    }
-
-    removeChangeListener(callback) {
-        this.removeListener(CHANGE_EVENT, callback);
-    }
-
-    emitChange() {
-        this.emit(CHANGE_EVENT);
-    }
-
-    isAuth() {
-        if (_user) {
-            return true
-        } else {
-            return false
-        }
+    getWeightError() {
+        this.isLoading = false;
+        this.weight = undefined;
     }
 
 }
 
-export default new WeightStore();
+export default alt.createStore(WeightStore, 'WeightStore');
