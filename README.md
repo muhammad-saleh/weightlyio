@@ -8,6 +8,8 @@ Weightly is a weight tracking app with these list of features:
 3. Current BMI  
 4. Set a weight goal to achieve  
 5. See the weight lost/gained last month  
+6. Import data from JSON/CSV  
+7. Export data to JSON/CSV  
 
 ###Technology Stack
 - Server
