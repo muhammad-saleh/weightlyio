@@ -1,18 +1,5 @@
 nav {
-    background: #666666;
-    width: 250px;
-    padding: 10px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    -webkit-transition: all 0.5s;
-    -moz-transition: all 0.5s;
-    -ms-transition: all 0.5s;
-    transition: all 0.5s;
-    -webkit-transform: translateX(-250px);
-    -moz-transform: translateX(-250px);
-    -ms-transform: translateX(-250px);
-    transform: translateX(-250px);
+    position: relative;
     z-index: 1;
     ul {
         padding: 0;
@@ -33,7 +20,7 @@ nav {
     .navTrigger {
         position: absolute;
         top: 5px;
-        left: 250px;
+        left: 268px;
         background: none;
         border: 0px solid;
         outline: 0;
@@ -43,11 +30,8 @@ nav {
         }
     }
 
-}
+    .navRoot > div {
+        overflow: visible !important;
+    }
 
-.navOpened nav {
-    -webkit-transform: translateX(0px);
-    -moz-transform: translateX(0px);
-    -ms-transform: translateX(0px);
-    transform: translateX(0px);
 }

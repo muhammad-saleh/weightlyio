@@ -7,7 +7,25 @@ import LoginPage from '../../LoginPage';
 import NavLoggedInItems from './NavLoggedInItems';
 import NavNotLoggedInItems from './NavNotLoggedInItems';
 
+import LeftNav from 'material-ui/lib/left-nav';
+import MenuItem from 'material-ui/lib/menus/menu-item';
+import RaisedButton from 'material-ui/lib/raised-button';
+
+import UserStore from '../../../stores/UserStore'
+
+
 export default class Nav extends React.Component {
+    componentWillMount() {
+        this.state = {
+            open: false
+        }
+    };
+
+    handleToggle = () => {
+        this.setState({open: !this.state.open});
+        this.props.toggleNav();
+    };
+
     render() {
         let NavItems;
         if (this.props.user) {
@@ -17,10 +35,11 @@ export default class Nav extends React.Component {
         }
         return (
             <nav>
-                <button className="navTrigger" onClick={this.props.toggleNav}>
-                    <i className="fa fa-bars"></i>
-                </button>
-                {NavItems}
+                <LeftNav open={this.state.open} className="navRoot">
+                <button className="navTrigger" onClick={this.handleToggle}><i className="fa fa-bars"></i></button>
+                  {NavItems}
+                </LeftNav>
+
             </nav>
         )
     }

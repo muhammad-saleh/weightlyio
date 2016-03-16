@@ -14,6 +14,8 @@ class App extends React.Component {
         super();
     }
 
+    
+
     componentWillMount() {
         AppActions.getUser();
         const Component = this;
