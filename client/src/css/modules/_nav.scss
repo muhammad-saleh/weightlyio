@@ -18,12 +18,13 @@ nav {
         }
     }
     .navTrigger {
+        background: $brand1;
         position: absolute;
-        top: 5px;
-        left: 268px;
-        background: none;
+        top: 0px;
+        left: 266px;
         border: 0px solid;
         outline: 0;
+        padding: 7px 12px;
         i {
             font-size: 25px;
             color:#FFF;

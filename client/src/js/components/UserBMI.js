@@ -21,8 +21,8 @@ class UserBMI extends React.Component {
             const stateWeight = Component.state.weight;
             if(stateWeight && stateWeight instanceof Array && stateWeight.length > 0){
                 const userWeight = Component.state.weight[0].weight;
-                const BMI = userWeight / ( (userHeight/100)*(userHeight/100) );
-                Component.setState({bmi: Number(BMI).toFixed(2)});
+                const BMI = Number(userWeight / ( (userHeight/100)*(userHeight/100) )).toFixed(2);
+                Component.setState({bmi: BMI});
             }
 
         });
