@@ -3,12 +3,29 @@ import React from 'react';
 import Dialog from 'material-ui/lib/dialog';
 import RaisedButton from 'material-ui/lib/raised-button';
 import TextField from 'material-ui/lib/text-field';
+import AppActions from '../actions/AppActions';
+import WeightStore from '../stores/WeightStore';
 
 class UserBMI extends React.Component {
     componentWillMount() {
         this.state = {
             open: false
         }
+    }
+
+    componentDidMount(){
+        const userHeight = parseInt(this.props.user.height);
+        let Component = this;
+        WeightStore.listen(function(state){
+            Component.setState(state);
+            const stateWeight = Component.state.weight;
+            if(stateWeight && stateWeight instanceof Array && stateWeight.length > 0){
+                const userWeight = Component.state.weight[0].weight;
+                const BMI = userWeight / ( (userHeight/100)*(userHeight/100) );
+                Component.setState({bmi: Number(BMI).toFixed(2)});
+            }
+
+        });
     }
 
     handleOpen = () => {
@@ -23,8 +40,8 @@ class UserBMI extends React.Component {
         let content = null;
         let actions = <div><RaisedButton label="Cancel" onClick={this.handleClose} /> <RaisedButton label="Submit" secondary={true} /></div>
 
-        if(this.state && this.state.user && this.state.user.height) {
-            content = <h1>okay</h1>
+        if(this.props && this.props.user && this.props.user.height) {
+            content = <h1>{this.state.bmi}</h1>
         }else{
             content = <div>To be able to view your BMI please add your height:<br/><button className="btn btn-primary" onClick={this.handleOpen}>Add Height</button></div>
         }

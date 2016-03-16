@@ -23,7 +23,7 @@ class HomePage extends React.Component {
                     </div>
                     <div className="col-md-6">
                         <Card cssClass="BMIComponent" cardIcon="tachometer" cardTitle="Your current BMI">
-                            <UserBMI />
+                            <UserBMI user={this.props.user} />
                         </Card>
                     </div>
                 </div>
