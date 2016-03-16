@@ -56,6 +56,7 @@ exports.getUser = function (req, res) {
         let returned_user = {
             email: user.email,
             provider: user.provider,
+            height: user.height || null,
             data: user[user.provider]
         };
         // returned_user.data.provider = user.provider || 'local';
