@@ -7,14 +7,17 @@ import UserStore from '../stores/UserStore';
 import Nav from './common/nav/nav';
 import FontAwesome from 'react-fontawesome';
 import classNames from 'classnames';
+import injectTapEventPlugin from 'react-tap-event-plugin';
+
 import alt from '../alt';
 
 class App extends React.Component {
     constructor() {
         super();
+        injectTapEventPlugin();
     }
 
-    
+
 
     componentWillMount() {
         AppActions.getUser();
