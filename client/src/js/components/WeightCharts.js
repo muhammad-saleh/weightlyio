@@ -9,16 +9,12 @@ import FontAwesome from 'react-fontawesome';
 
 class WeightCharts extends React.Component {
     componentWillMount() {
+        const Component = this;
         AppActions.getWeight();
-        this.state = {
-            weight: []
-        }
-
+        this.state = WeightStore.getState();
     }
     componentDidMount() {
         const Component = this;
-        Component.state = WeightStore.getState();
-
         WeightStore.listen(function(state) {
             Component.setState(state);
         });

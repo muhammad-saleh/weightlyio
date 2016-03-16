@@ -11,27 +11,27 @@ import UserStore from './UserStore';
 class WeightStore {
 
     constructor(props) {
-        this.weight = [];
-        this.isLoading = true;
+        this.weight = null;
+        this.isLoading = false;
         this.isError = null;
 
         this.bindListeners({
-            getWeightInit: AppActions.GET_WEIGHT,
+            getWeightInit: AppActions.GET_WEIGHT_INIT,
             getWeightSuccess: AppActions.GET_WEIGHT_SUCCESS,
         });
     }
 
     getWeight() {
-        if (this.weight !== []) {
-            return this.weight;
-        } else {
-            AppActions.getWeight()
-        }
+        return this.weight;
     }
     getWeightInit() {
+        console.log('weight init')
+        this.waitFor(UserStore);
         this.isLoading = true;
     }
     getWeightSuccess(weight) {
+        console.log('weight success')
+        this.waitFor(UserStore);
         this.isLoading = false;
         this.weight = weight;
     }

@@ -10,6 +10,9 @@ import classNames from 'classnames';
 import alt from '../alt';
 
 class App extends React.Component {
+    constructor() {
+        super();
+    }
 
     componentWillMount() {
         AppActions.getUser();

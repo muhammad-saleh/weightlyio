@@ -19,13 +19,20 @@ class AppActions {
     }
 
     getWeight() {
+        this.getWeightInit();
+
         return (dispatch) => {
-            // dispatch();
             WeightSource.fetch().then((weight)=>{
                 this.getWeightSuccess(weight);
             })
         }
+
     }
+
+    getWeightInit() {
+        this.isLoading = true;
+    }
+
     getUser() {
         return (dispatch) => {
             dispatch();
@@ -41,6 +48,7 @@ class AppActions {
     }
 
     getWeightSuccess(weight) {
+        this.isLoading = false;
         return weight;
     }
 
