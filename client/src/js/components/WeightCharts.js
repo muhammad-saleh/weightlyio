@@ -21,23 +21,23 @@ class WeightCharts extends React.Component {
     }
 
     extractWeight(arr) {
-        if(Array.isArray(arr)){
-            var weightArray = arr.map(function(obj){
-               return obj.weight;
+        if (Array.isArray(arr)) {
+            var weightArray = arr.map(function(obj) {
+                return obj.weight;
             });
             return weightArray;
-        }else {
+        } else {
             return []
         }
     }
 
     extractDates(arr) {
-        if(Array.isArray(arr)){
-            var datesArray = arr.map(function(obj){
+        if (Array.isArray(arr)) {
+            var datesArray = arr.map(function(obj) {
                 return moment(obj.date).format("MMM DD YYYY");
             });
             return datesArray;
-        }else {
+        } else {
             return []
         }
     }
@@ -57,7 +57,23 @@ class WeightCharts extends React.Component {
             ]
         };
 
-        var options = {scaleShowGridLines : true,scaleGridLineColor : "rgba(0,0,0,.05)",scaleGridLineWidth : 1,scaleShowHorizontalLines: true,scaleShowVerticalLines: true,bezierCurve : true,bezierCurveTension : 0.4,pointDot : true,pointDotRadius : 4,pointDotStrokeWidth : 1,pointHitDetectionRadius : 20,datasetStroke : true,datasetStrokeWidth : 2,datasetFill : true,responsive: true,legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].strokeColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>"};
+        var options = {
+            scaleShowGridLines: true,
+            scaleGridLineColor: "rgba(0,0,0,.05)",
+            scaleGridLineWidth: 1,
+            scaleShowHorizontalLines: true,
+            scaleShowVerticalLines: true,
+            bezierCurve: true,
+            bezierCurveTension: 0.4,
+            pointDot: true,
+            pointDotRadius: 4,
+            pointDotStrokeWidth: 1,
+            pointHitDetectionRadius: 20,
+            datasetStroke: true,
+            datasetStrokeWidth: 2,
+            datasetFill: true,
+            responsive: true,
+            legendTemplate: "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){% ><li><span style=\"background-color:<%=datasets[i].strokeColor%>\"></span><%if(datasets[i].label){% ><%=datasets[i].label%><%}%></li><%}%></ul>"};
 
         return (
             <div>

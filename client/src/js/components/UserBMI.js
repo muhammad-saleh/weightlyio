@@ -13,15 +13,16 @@ class UserBMI extends React.Component {
         }
     }
 
-    componentDidMount(){
-        const userHeight = parseInt(this.props.user.height);
+    componentDidMount() {
         let Component = this;
-        WeightStore.listen(function(state){
+        const userHeight = parseInt(this.props.user.height);
+        WeightStore.listen(function(state) {
             Component.setState(state);
             const stateWeight = Component.state.weight;
-            if(stateWeight && stateWeight instanceof Array && stateWeight.length > 0){
-                const userWeight = Component.state.weight[0].weight;
-                const BMI = Number(userWeight / ( (userHeight/100)*(userHeight/100) )).toFixed(2);
+
+            if (stateWeight && stateWeight instanceof Array && stateWeight.length > 0) {
+                const userWeight = stateWeight[stateWeight.length - 1].weight;
+                const BMI = Number(userWeight / ((userHeight / 100) * (userHeight / 100))).toFixed(2);
                 Component.setState({bmi: BMI});
             }
 
@@ -38,26 +39,23 @@ class UserBMI extends React.Component {
 
     render() {
         let content = null;
-        let actions = <div><RaisedButton label="Cancel" onClick={this.handleClose} /> <RaisedButton label="Submit" secondary={true} /></div>
+        let actions = <div><RaisedButton label="Cancel" onClick={this.handleClose}/>
+            <RaisedButton label="Submit" secondary={true}/></div>
 
-        if(this.props && this.props.user && this.props.user.height) {
+        if (this.props && this.props.user && this.props.user.height) {
             content = <h1>{this.state.bmi}</h1>
-        }else{
-            content = <div>To be able to view your BMI please add your height:<br/><button className="btn btn-primary" onClick={this.handleOpen}>Add Height</button></div>
+        } else {
+            content = <div>To be able to view your BMI please add your height:<br/>
+                <button className="btn btn-primary" onClick={this.handleOpen}>Add Height</button>
+            </div>
         }
         return (
             <div>
                 {content}
-                <Dialog
-                  title="Please add your height:"
-                  modal={false}
-                  actions={actions}
-                  open={this.state.open}
-                  onRequestClose={this.handleClose}
-                >
-                  <div>
-                      <TextField hintText="Height in centimeters" /><br/>
-                  </div>
+                <Dialog title="Please add your height:" modal={false} actions={actions} open={this.state.open} onRequestClose={this.handleClose}>
+                    <div>
+                        <TextField hintText="Height in centimeters"/><br/>
+                    </div>
                 </Dialog>
             </div>
         )

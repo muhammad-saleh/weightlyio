@@ -17,8 +17,6 @@ class App extends React.Component {
         injectTapEventPlugin();
     }
 
-
-
     componentWillMount() {
         AppActions.getUser();
         const Component = this;
@@ -29,7 +27,7 @@ class App extends React.Component {
             navOpened: false
         }
 
-        UserStore.listen(function(state){
+        UserStore.listen(function(state) {
             Component.setState(UserStore.getState());
         });
 
@@ -44,7 +42,7 @@ class App extends React.Component {
     render() {
         var navClass = classNames({'navOpened': this.state.navOpened});
         var childrenWithProps = React.Children.map(this.props.children, (child) => {
-            return React.cloneElement(child, { user: this.state.user });
+            return React.cloneElement(child, {user: this.state.user});
         });
         if (!this.state.user && this.state.isLoading) {
             return (
@@ -54,7 +52,7 @@ class App extends React.Component {
             return (
                 <div user={this.state.user} isLoading={this.state.isLoading} className={navClass}>
                     <Nav user={this.state.user} toggleNav={this.toggleNav.bind(this)}/>
-                    <Header user={this.state.user} isLoading={this.state.isLoading} />
+                    <Header user={this.state.user} isLoading={this.state.isLoading}/>
                     <div className="contentContainer" user={this.state.user}>
                         {childrenWithProps}
                     </div>
