@@ -38,6 +38,6 @@ module.exports = {
         new ExtractTextPlugin('../../dist/css/style.css', {
             allChunks: true
         }),
-        // new webpack.optimize.UglifyJsPlugin({minimize: false})
+        new webpack.optimize.UglifyJsPlugin({minimize: false})
     ]
 }
