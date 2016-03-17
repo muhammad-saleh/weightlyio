@@ -1,10 +1,11 @@
 'use strict';
 import React from 'react';
 import Dialog from 'material-ui/lib/dialog';
-import RaisedButton from 'material-ui/lib/raised-button';
 import TextField from 'material-ui/lib/text-field';
 import AppActions from '../actions/AppActions';
 import WeightStore from '../stores/WeightStore';
+import UserStore from '../stores/UserStore';
+import FlatButton from 'material-ui/lib/flat-button';
 
 class UserBMI extends React.Component {
     componentWillMount() {
@@ -15,32 +16,56 @@ class UserBMI extends React.Component {
 
     componentDidMount() {
         let Component = this;
-        const userHeight = parseInt(this.props.user.height);
+        let userHeight = null;
+
+
+
         WeightStore.listen(function(state) {
             Component.setState(state);
-            const stateWeight = Component.state.weight;
+            let UserStoreState = UserStore.getState();
+            let stateWeight = Component.state.weight;
 
-            if (stateWeight && stateWeight instanceof Array && stateWeight.length > 0) {
+            if(Component.props.user.height){
+                userHeight = parseInt(Component.props.user.height);
+            } else {
+                userHeight = parseInt(UserStoreState.user.height);
+            }
+
+            if (stateWeight && stateWeight instanceof Array && stateWeight.length > 0 && userHeight) {
                 const userWeight = stateWeight[stateWeight.length - 1].weight;
-                const BMI = Number(userWeight / ((userHeight / 100) * (userHeight / 100))).toFixed(2);
+                let BMI = Number(userWeight / ((userHeight / 100) * (userHeight / 100))).toFixed(2);
+                if(isNaN(BMI)){
+                    BMI = '-';
+                }
                 Component.setState({bmi: BMI});
             }
 
         });
     }
 
+
+
     handleOpen = () => {
         this.setState({open: true});
     };
 
     handleClose = () => {
+        let Component = this;
         this.setState({open: false});
+        if(this.state && this.state.height){
+            AppActions.postHeight({ height: this.state.height });
+        }
+    };
+
+    handleHeightChange = (event, data) => {
+        this.setState({height: event.target.value});
     };
 
     render() {
         let content = null;
-        let actions = <div><RaisedButton label="Cancel" onClick={this.handleClose}/>
-            <RaisedButton label="Submit" secondary={true}/></div>
+        const actions = [
+          <FlatButton label="Submit" primary={true} keyboardFocused={true} onTouchTap={this.handleClose} />,
+        ];
 
         if (this.props && this.props.user && this.props.user.height) {
             content = <h1>{this.state.bmi}</h1>
@@ -52,9 +77,9 @@ class UserBMI extends React.Component {
         return (
             <div>
                 {content}
-                <Dialog title="Please add your height:" modal={false} actions={actions} open={this.state.open} onRequestClose={this.handleClose}>
+                <Dialog title="Please add your height:" modal={true} actions={actions} open={this.state.open} onRequestClose={this.handleClose}>
                     <div>
-                        <TextField hintText="Height in centimeters"/><br/>
+                        <TextField hintText="Height in centimeters" onChange={this.handleHeightChange} /><br/>
                     </div>
                 </Dialog>
             </div>

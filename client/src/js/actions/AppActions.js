@@ -1,10 +1,9 @@
 'use strict';
 
-import React from 'react';
 import alt from '../alt';
-import ActionTypes from '../constants/ActionTypes';
 import UserSource from '../sources/UserSource';
 import WeightSource from '../sources/WeightSource';
+import HeightSource from '../sources/HeightSource';
 
 class AppActions {
     constructor() {
@@ -41,6 +40,18 @@ class AppActions {
 
     }
 
+    postHeight(data) {
+        let heightData = data;
+        this.postWeightInit();
+
+        return (dispatch) => {
+            HeightSource.post(heightData).then((data)=>{
+                this.postHeightSuccess(heightData);
+            })
+        }
+
+    }
+
     getWeightInit() {
         this.isLoading = true;
     }
@@ -69,6 +80,11 @@ class AppActions {
     }
 
     postWeightSuccess(data) {
+        this.isLoading = false;
+        return data;
+    }
+
+    postHeightSuccess(data) {
         this.isLoading = false;
         return data;
     }

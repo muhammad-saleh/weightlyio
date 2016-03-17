@@ -19,6 +19,7 @@ class WeightStore {
             getWeightInit: AppActions.GET_WEIGHT_INIT,
             getWeightSuccess: AppActions.GET_WEIGHT_SUCCESS,
             postWeightSuccess: AppActions.POST_WEIGHT_SUCCESS,
+            postHeightSuccess: AppActions.POST_HEIGHT_SUCCESS,
         });
     }
 
@@ -43,6 +44,10 @@ class WeightStore {
     getWeightError() {
         this.isLoading = false;
         this.weight = undefined;
+    }
+    postHeightSuccess(data) {
+        this.isLoading = false;
+        return data;
     }
 
 }
