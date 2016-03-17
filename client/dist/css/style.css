@@ -7908,6 +7908,19 @@ body {
   body .contentContainer {
     padding: 20px; }
 
+.noWeight .contentContainer .card {
+  display: none; }
+
+.noWeight .chartComponent.card {
+  display: block;
+  text-align: center; }
+  .noWeight .chartComponent.card .cardTitle {
+    display: none; }
+  .noWeight .chartComponent.card .noWeightAlert {
+    padding: 50px 20px; }
+    .noWeight .chartComponent.card .noWeightAlert .introText {
+      margin: 20px; }
+
 header {
   background: #2490df;
   color: #FFF;

@@ -4,3 +4,23 @@ body {
         padding: 20px;
     }
 }
+
+.noWeight {
+    .contentContainer .card {
+        display: none;
+    }
+
+    .chartComponent.card {
+        display: block;
+        text-align: center;
+        .cardTitle {
+            display: none;
+        }
+        .noWeightAlert {
+            padding: 50px 20px;
+            .introText {
+                margin: 20px;
+            }
+        }
+    }
+}

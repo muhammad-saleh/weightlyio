@@ -4,6 +4,7 @@ import {Line} from 'react-chartjs';
 import AppActions from '../actions/AppActions';
 import WeightStore from '../stores/WeightStore';
 import UserStore from '../stores/UserStore';
+import AddWeight from './AddWeight';
 import moment from 'moment';
 import FontAwesome from 'react-fontawesome';
 
@@ -22,7 +23,7 @@ class WeightCharts extends React.Component {
 
     extractWeight(arr) {
         if (Array.isArray(arr)) {
-            var weightArray = arr.map(function(obj) {
+            let weightArray = arr.map(function(obj) {
                 return obj.weight;
             });
             return weightArray;
@@ -33,7 +34,7 @@ class WeightCharts extends React.Component {
 
     extractDates(arr) {
         if (Array.isArray(arr)) {
-            var datesArray = arr.map(function(obj) {
+            let datesArray = arr.map(function(obj) {
                 return moment(obj.date).format("MMM DD YYYY");
             });
             return datesArray;
@@ -43,8 +44,11 @@ class WeightCharts extends React.Component {
     }
 
     render() {
-        var data = {
-            labels: this.extractDates(this.state.weight),
+        let weights = this.extractWeight(this.state.weight);
+        let dates = this.extractDates(this.state.weight);
+
+        let data = {
+            labels: dates,
             datasets: [
                 {
                     label: "My Weight",
@@ -52,12 +56,12 @@ class WeightCharts extends React.Component {
                     strokeColor: "rgba(151,187,205,0.8)",
                     highlightFill: "rgba(151,187,205,0.75)",
                     highlightStroke: "rgba(151,187,205,1)",
-                    data: this.extractWeight(this.state.weight)
+                    data: weights
                 }
             ]
         };
 
-        var options = {
+        let options = {
             scaleShowGridLines: true,
             scaleGridLineColor: "rgba(0,0,0,.05)",
             scaleGridLineWidth: 1,
@@ -75,9 +79,23 @@ class WeightCharts extends React.Component {
             responsive: true,
             legendTemplate: "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){% ><li><span style=\"background-color:<%=datasets[i].strokeColor%>\"></span><%if(datasets[i].label){% ><%=datasets[i].label%><%}%></li><%}%></ul>"};
 
+        let content = null;
+        if(weights instanceof Array && weights.length > 1){
+            content = <Line data={data} options={options} width="1400" height="250" />
+        }else if(weights instanceof Array && weights.length === 1){
+            content = <div><h4>Please add one more weight so we can display the chart</h4><Line data={data} options={options} width="1400" height="250" /></div>
+        }else{
+            content = (
+                <div className="noWeightAlert">
+                    <div className="introText"><h1>Kindly start adding your weight:</h1></div>
+                    <div><AddWeight /></div>
+                </div>
+            )
+        }
+
         return (
             <div>
-                <Line data={data} options={options} width="1400" height="250" />
+                {content}
             </div>
         )
     }

@@ -4,6 +4,7 @@ import React from 'react';
 import Header from './common/header';
 import AppActions from '../actions/AppActions';
 import UserStore from '../stores/UserStore';
+import WeightStore from '../stores/WeightStore';
 import Nav from './common/nav/nav';
 import FontAwesome from 'react-fontawesome';
 import classNames from 'classnames';
@@ -31,6 +32,14 @@ class App extends React.Component {
             Component.setState(UserStore.getState());
         });
 
+        WeightStore.listen(function(state) {
+            if(state && state.weight && state.weight instanceof Array && state.weight.length === 0){
+                Component.setState({noWeight: true});
+            } else {
+                Component.setState({noWeight: false});
+            }
+        });
+
     }
 
     toggleNav() {
@@ -40,8 +49,8 @@ class App extends React.Component {
     }
 
     render() {
-        var navClass = classNames({'navOpened': this.state.navOpened});
-        var childrenWithProps = React.Children.map(this.props.children, (child) => {
+        let noWeight = classNames({'noWeight' : this.state.noWeight});
+        let childrenWithProps = React.Children.map(this.props.children, (child) => {
             return React.cloneElement(child, {user: this.state.user});
         });
         if (!this.state.user && this.state.isLoading) {
@@ -50,7 +59,7 @@ class App extends React.Component {
             )
         } else {
             return (
-                <div user={this.state.user} isLoading={this.state.isLoading} className={navClass}>
+                <div user={this.state.user} isLoading={this.state.isLoading} className={noWeight}>
                     <Nav user={this.state.user} toggleNav={this.toggleNav.bind(this)}/>
                     <Header user={this.state.user} isLoading={this.state.isLoading}/>
                     <div className="contentContainer" user={this.state.user}>

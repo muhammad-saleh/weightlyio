@@ -44,7 +44,7 @@ class UserCurrentWeight extends React.Component {
             date = moment(date).format("MMM Do YYYY");
             content = <div><h1>{this.state.currentWeight} KG</h1><small>On {date}</small></div>
         }else{
-            content = <div>Please add a weight:<br/><button className="btn btn-primary" onClick={this.handleOpen}>Add Weight</button></div>
+            content = <div>Sorry, No weight added yet</div>
         }
         return (
             <div>
