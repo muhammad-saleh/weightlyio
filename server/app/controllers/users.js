@@ -54,6 +54,7 @@ exports.getUser = function (req, res) {
     const _id = req.user._id;
     User.findById(_id,function(err, user){
         let returned_user = {
+            _id: _id,
             email: user.email,
             provider: user.provider,
             height: user.height || null,
@@ -63,6 +64,15 @@ exports.getUser = function (req, res) {
         res.send(returned_user);
     })
 };
+
+exports.postHeight = function (req, res) {
+    User.findById(req.user._id, function (err, user) {
+        if (err) return done(err);
+        user.height = req.body.height;
+        user.save();
+        res.send();
+    });
+}
 
 exports.signin = function () {};
 

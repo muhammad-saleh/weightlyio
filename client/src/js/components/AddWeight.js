@@ -31,7 +31,7 @@ class AddWeight extends React.Component {
         this.setState({newWeightDate: date});
     };
 
-    handleNewWeightChange = (event, weight) => {
+    handleNewWeightChange = (event) => {
         this.setState({newWeight: event.target.value});
     };
 
