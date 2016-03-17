@@ -2,7 +2,6 @@
 
 import React from 'react';
 import UserStore from '../stores/UserStore';
-import WeightStore from '../stores/WeightStore';
 import Constants from '../constants/Constants';
 import AddWeight from './AddWeight';
 
