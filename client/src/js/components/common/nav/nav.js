@@ -35,7 +35,7 @@ export default class Nav extends React.Component {
         }
         return (
             <nav>
-                <LeftNav open={this.state.open} className="navRoot">
+                <LeftNav open={this.state.open} className="navRoot" docked={false} onRequestChange={open => this.setState({open})}>
                 <button className="navTrigger" onClick={this.handleToggle}><i className="fa fa-bars"></i></button>
                   {NavItems}
                 </LeftNav>
