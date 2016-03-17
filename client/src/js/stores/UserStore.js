@@ -39,7 +39,6 @@ class UserStore {
     }
 
     handleUpdateLocations(locations) {
-        // console.log('store lcoations', locations)
         this.locations = locations;
     }
 

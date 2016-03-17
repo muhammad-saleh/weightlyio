@@ -6,7 +6,7 @@ const Weight = require('../models/weight');
 module.exports = function (req, res) {
     var weight = new Weight({
         weight: req.body.weight.toString(),
-        date: new Date(),
+        date: req.body.date || new Date(),
         user: req.user._id.toString(),
         feel: req.body.feel || "normal"
     });

@@ -18,6 +18,7 @@ class WeightStore {
         this.bindListeners({
             getWeightInit: AppActions.GET_WEIGHT_INIT,
             getWeightSuccess: AppActions.GET_WEIGHT_SUCCESS,
+            postWeightSuccess: AppActions.POST_WEIGHT_SUCCESS,
         });
     }
 
@@ -25,15 +26,19 @@ class WeightStore {
         return this.weight;
     }
     getWeightInit() {
-        console.log('weight init')
         this.waitFor(UserStore);
         this.isLoading = true;
     }
     getWeightSuccess(weight) {
-        console.log('weight success')
         this.waitFor(UserStore);
         this.isLoading = false;
         this.weight = weight;
+    }
+    postWeightSuccess(data) {
+        this.waitFor(UserStore);
+        this.isLoading = false;
+        this.weight.push(data);
+        return this.weight;
     }
     getWeightError() {
         this.isLoading = false;

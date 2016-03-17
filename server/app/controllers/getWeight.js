@@ -12,7 +12,7 @@ module.exports = function (req, res) {
             res.send(err);
         } else {
             var nWeights = weights.sort(function(a,b){
-                return new Date(b.date) - new Date(a.date);
+                return new Date(a.date) - new Date(b.date);
             });
             res.json(nWeights)
         }

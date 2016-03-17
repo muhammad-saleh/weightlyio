@@ -4,6 +4,8 @@ import React from 'react';
 import UserStore from '../stores/UserStore';
 import WeightStore from '../stores/WeightStore';
 import Constants from '../constants/Constants';
+import AddWeight from './AddWeight';
+
 
 export default class UserTile extends React.Component {
     componentWillMount() {
@@ -45,6 +47,7 @@ export default class UserTile extends React.Component {
                 <div className="col-xs-10">
                     <div>{this.userName(this.state.user)}</div>
                     <div><a href={Constants.LOGOUT_URL}>Logout</a></div>
+                    <div><AddWeight /></div>
                 </div>
             </div>
         )

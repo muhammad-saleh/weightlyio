@@ -29,7 +29,23 @@ class AppActions {
 
     }
 
+    postWeight(data) {
+        let weightData = data;
+        this.postWeightInit();
+
+        return (dispatch) => {
+            WeightSource.post(weightData).then((data)=>{
+                this.postWeightSuccess(weightData);
+            })
+        }
+
+    }
+
     getWeightInit() {
+        this.isLoading = true;
+    }
+
+    postWeightInit() {
         this.isLoading = true;
     }
 
@@ -50,6 +66,11 @@ class AppActions {
     getWeightSuccess(weight) {
         this.isLoading = false;
         return weight;
+    }
+
+    postWeightSuccess(data) {
+        this.isLoading = false;
+        return data;
     }
 
 }

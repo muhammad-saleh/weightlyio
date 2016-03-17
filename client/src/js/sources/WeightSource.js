@@ -8,6 +8,15 @@ const WeightSource = {
         },
         crossDomain: true
     })
+    },
+  post: function (data) {
+    return $.ajax({
+        method: "POST",
+        url: "http://localhost:3000/weight",
+        data: { weight: data.weight, date: data.date, feel:""},
+        xhrFields: { withCredentials: true },
+        crossDomain: true
+    })
   }
 };
 
