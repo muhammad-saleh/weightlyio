@@ -24,8 +24,7 @@ class App extends React.Component {
         Component.state = UserStore.getState();
 
         Component.state = {
-            isLoading: UserStore.getState().isLoading,
-            navOpened: false
+            isLoading: UserStore.getState().isLoading
         }
 
         UserStore.listen(function(state) {
@@ -42,12 +41,6 @@ class App extends React.Component {
 
     }
 
-    toggleNav() {
-        this.setState({
-            navOpened: !this.state.navOpened
-        })
-    }
-
     render() {
         let noWeight = classNames({'noWeight' : this.state.noWeight});
         let childrenWithProps = React.Children.map(this.props.children, (child) => {
@@ -60,7 +53,7 @@ class App extends React.Component {
         } else {
             return (
                 <div user={this.state.user} isLoading={this.state.isLoading} className={noWeight}>
-                    <Nav user={this.state.user} toggleNav={this.toggleNav.bind(this)}/>
+                    <Nav user={this.state.user} />
                     <Header user={this.state.user} isLoading={this.state.isLoading}/>
                     <div className="contentContainer" user={this.state.user}>
                         {childrenWithProps}

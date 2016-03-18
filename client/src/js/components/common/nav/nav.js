@@ -17,13 +17,12 @@ import UserStore from '../../../stores/UserStore'
 export default class Nav extends React.Component {
     componentWillMount() {
         this.state = {
-            open: false
+            navopen: false
         }
     };
 
     handleToggle = () => {
-        this.setState({open: !this.state.open});
-        this.props.toggleNav();
+        this.setState({navopen: !this.state.navopen});
     };
 
     render() {
@@ -35,7 +34,7 @@ export default class Nav extends React.Component {
         }
         return (
             <nav>
-                <LeftNav open={this.state.open} className="navRoot" docked={false} onRequestChange={open => this.setState({open})}>
+                <LeftNav open={this.state.navopen} className="navRoot" docked={false} onRequestChange={navopen => this.setState({navopen})}>
                 <button className="navTrigger" onClick={this.handleToggle}><i className="fa fa-bars"></i></button>
                   {NavItems}
                 </LeftNav>
