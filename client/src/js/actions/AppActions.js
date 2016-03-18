@@ -4,6 +4,7 @@ import alt from '../alt';
 import UserSource from '../sources/UserSource';
 import WeightSource from '../sources/WeightSource';
 import HeightSource from '../sources/HeightSource';
+import GoalSource from '../sources/GoalSource';
 
 class AppActions {
     constructor() {
@@ -52,6 +53,18 @@ class AppActions {
 
     }
 
+    postGoal(data) {
+        let goal = data;
+        this.postWeightInit();
+
+        return (dispatch) => {
+            GoalSource.post(goal).then((data)=>{
+                this.postGoalSuccess(goal);
+            })
+        }
+
+    }
+
     getWeightInit() {
         this.isLoading = true;
     }
@@ -85,6 +98,11 @@ class AppActions {
     }
 
     postHeightSuccess(data) {
+        this.isLoading = false;
+        return data;
+    }
+
+    postGoalSuccess(data) {
         this.isLoading = false;
         return data;
     }

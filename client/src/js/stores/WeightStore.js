@@ -20,6 +20,7 @@ class WeightStore {
             getWeightSuccess: AppActions.GET_WEIGHT_SUCCESS,
             postWeightSuccess: AppActions.POST_WEIGHT_SUCCESS,
             postHeightSuccess: AppActions.POST_HEIGHT_SUCCESS,
+            postGoalSuccess: AppActions.POST_GOAL_SUCCESS,
         });
     }
 
@@ -47,6 +48,10 @@ class WeightStore {
         this.weight = undefined;
     }
     postHeightSuccess(data) {
+        this.isLoading = false;
+        return data;
+    }
+    postGoalSuccess(data) {
         this.isLoading = false;
         return data;
     }

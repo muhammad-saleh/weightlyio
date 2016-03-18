@@ -7,6 +7,7 @@ import UserStore from '../stores/UserStore';
 import Card from './common/card';
 import UserTile from './UserTile';
 import UserBMI from './UserBMI';
+import UserGoal from './UserGoal';
 import UserCurrentWeight from './UserCurrentWeight';
 import WeightTimeline from './WeightTimeline/WeightTimeline';
 
@@ -32,6 +33,9 @@ class HomePage extends React.Component {
                         </Card>
                         <Card cssClass="BMIComponent" cardIcon="tachometer" cardTitle="Your current BMI">
                             <UserBMI user={this.props.user} />
+                        </Card>
+                        <Card cssClass="GoalComponent" cardIcon="tachometer" cardTitle="Your current goal">
+                            <UserGoal user={this.props.user} />
                         </Card>
                     </div>
                 </div>

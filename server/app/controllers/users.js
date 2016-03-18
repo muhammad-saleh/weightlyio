@@ -58,6 +58,7 @@ exports.getUser = function (req, res) {
             email: user.email,
             provider: user.provider,
             height: user.height || null,
+            goal: user.goal || null,
             data: user[user.provider]
         };
         // returned_user.data.provider = user.provider || 'local';
@@ -69,6 +70,15 @@ exports.postHeight = function (req, res) {
     User.findById(req.user._id, function (err, user) {
         if (err) return done(err);
         user.height = req.body.height;
+        user.save();
+        res.send();
+    });
+}
+
+exports.postGoal = function (req, res) {
+    User.findById(req.user._id, function (err, user) {
+        if (err) return done(err);
+        user.goal = req.body.goal;
         user.save();
         res.send();
     });
