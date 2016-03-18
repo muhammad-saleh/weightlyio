@@ -10,6 +10,7 @@ import UserBMI from './UserBMI';
 import UserGoal from './UserGoal';
 import UserCurrentWeight from './UserCurrentWeight';
 import WeightTimeline from './WeightTimeline/WeightTimeline';
+import WeightChangeInDays from './WeightChangeInDays';
 
 class HomePage extends React.Component {
     render() {
@@ -36,6 +37,9 @@ class HomePage extends React.Component {
                         </Card>
                         <Card cssClass="GoalComponent" cardIcon="tachometer" cardTitle="Your current goal">
                             <UserGoal user={this.props.user} />
+                        </Card>
+                        <Card cssClass="WeightInDaysComponent" cardIcon="tachometer" cardTitle="Weight change in last month">
+                            <WeightChangeInDays days="30" user={this.props.user} />
                         </Card>
                     </div>
                 </div>

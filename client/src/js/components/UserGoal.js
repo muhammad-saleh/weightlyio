@@ -47,12 +47,13 @@ class UserGoal extends React.Component {
         let Component = this;
         this.setState({open: false});
         if(this.state && this.state.goal){
-            AppActions.postGoal({ goal: this.state.goal });
+            AppActions.postGoal({ goal: this.state.goalNew });
+            Component.setState({goal: this.state.goalNew});
         }
     };
 
     handleGoalChange = (event, data) => {
-        this.setState({goal: event.target.value});
+        this.setState({goalNew: event.target.value});
     };
 
     render() {
@@ -62,7 +63,7 @@ class UserGoal extends React.Component {
         ];
 
         if (this.props && this.props.user && this.props.user.goal) {
-            content = <h1>{this.state.goal}</h1>
+            content = <div><h1>{this.state.goal}</h1><br/><button className="btn btn-primary" onClick={this.handleOpen}>Update Goal</button></div>
         } else {
             content = <div>Add a goal:<br/>
                 <button className="btn btn-primary" onClick={this.handleOpen}>Add Goal</button>
