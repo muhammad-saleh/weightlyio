@@ -7,6 +7,8 @@ import WeightStore from '../stores/WeightStore';
 import UserStore from '../stores/UserStore';
 import FlatButton from 'material-ui/lib/flat-button';
 
+import Utils from '../utils/utils';
+
 class UserBMI extends React.Component {
     componentWillMount() {
         this.state = {
@@ -33,7 +35,7 @@ class UserBMI extends React.Component {
 
             if (stateWeight && stateWeight instanceof Array && stateWeight.length > 0 && userHeight) {
                 const userWeight = stateWeight[0].weight;
-                let BMI = Number(userWeight / ((userHeight / 100) * (userHeight / 100))).toFixed(2);
+                let BMI = Utils.calculateBMI(userWeight, userHeight);
                 if(isNaN(BMI)){
                     BMI = '-';
                 }
