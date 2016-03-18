@@ -32,7 +32,7 @@ class UserBMI extends React.Component {
             }
 
             if (stateWeight && stateWeight instanceof Array && stateWeight.length > 0 && userHeight) {
-                const userWeight = stateWeight[stateWeight.length - 1].weight;
+                const userWeight = stateWeight[0].weight;
                 let BMI = Number(userWeight / ((userHeight / 100) * (userHeight / 100))).toFixed(2);
                 if(isNaN(BMI)){
                     BMI = '-';

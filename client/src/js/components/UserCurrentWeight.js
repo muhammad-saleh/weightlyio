@@ -20,7 +20,7 @@ class UserCurrentWeight extends React.Component {
             Component.setState(state);
             const stateWeight = Component.state.weight;
             if(stateWeight && stateWeight instanceof Array && stateWeight.length > 0){
-                const userWeight = stateWeight[stateWeight.length-1].weight;
+                const userWeight = stateWeight[0].weight;
                 Component.setState({currentWeight: userWeight});
             }
 
@@ -40,7 +40,7 @@ class UserCurrentWeight extends React.Component {
         let actions = <div><RaisedButton label="Cancel" onClick={this.handleClose} /> <RaisedButton label="Submit" secondary={true} /></div>
 
         if(this.state && this.state.currentWeight) {
-            let date = new Date(String(this.state.weight[this.state.weight.length-1].date));
+            let date = new Date(String(this.state.weight[0].date));
             date = moment(date).format("MMM Do YYYY");
             content = <div><h1>{this.state.currentWeight} KG</h1><small>On {date}</small></div>
         }else{

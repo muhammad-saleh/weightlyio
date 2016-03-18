@@ -38,7 +38,8 @@ class WeightStore {
     postWeightSuccess(data) {
         this.waitFor(UserStore);
         this.isLoading = false;
-        this.weight.push(data);
+        this.weight.unshift(data);
+        // console.log(this.weight)
         return this.weight;
     }
     getWeightError() {

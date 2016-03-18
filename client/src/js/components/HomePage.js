@@ -8,6 +8,7 @@ import Card from './common/card';
 import UserTile from './UserTile';
 import UserBMI from './UserBMI';
 import UserCurrentWeight from './UserCurrentWeight';
+import WeightTimeline from './WeightTimeline/WeightTimeline';
 
 class HomePage extends React.Component {
     render() {
@@ -20,6 +21,9 @@ class HomePage extends React.Component {
                     <div className="col-md-6">
                         <Card cssClass="userComponent">
                             <UserTile />
+                        </Card>
+                        <Card cssClass="weightTimeline">
+                            <WeightTimeline />
                         </Card>
                     </div>
                     <div className="col-md-6">

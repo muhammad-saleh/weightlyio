@@ -1,0 +1,44 @@
+.weightTimeline {
+    padding: 0px;
+    overflow: hidden;
+    position: relative;
+    .verDivider {
+        position: absolute;
+        top: 0px;
+        left: 30%;
+        background: #CCC;
+        width: 2px;
+        height: 1000px;
+        z-index: 1;
+    }
+
+    .wtInner {
+        overflow: auto;
+        position: relative;
+        padding: 20px;
+        max-height: 600px;
+        .weightRow {
+            background: #F9F9F9;
+            padding: 5px;
+            height: 60px;
+            overflow: hidden;
+            margin-bottom: 5px;
+            position: relative;
+            .rowCircle {
+                background: #a2a2a2;
+                width: 14px;
+                height: 14px;
+                position: absolute;
+                top: 50%;
+                left: 30%;
+                margin-left: -14px;
+                margin-top: -6px;
+                -webkit-border-radius: 50%;
+                -moz-border-radius: 50%;
+                -ms-border-radius: 50%;
+                border-radius: 50%;
+                z-index: 2;
+            }
+        }
+    }
+}

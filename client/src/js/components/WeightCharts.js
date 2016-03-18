@@ -46,7 +46,6 @@ class WeightCharts extends React.Component {
     render() {
         let weights = this.extractWeight(this.state.weight);
         let dates = this.extractDates(this.state.weight);
-
         let data = {
             labels: dates,
             datasets: [
