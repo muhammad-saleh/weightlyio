@@ -7,6 +7,7 @@ import UserStore from '../stores/UserStore';
 import AddWeight from './AddWeight';
 import moment from 'moment';
 import FontAwesome from 'react-fontawesome';
+import Card from './common/card';
 
 class WeightCharts extends React.Component {
     componentWillMount() {
@@ -76,13 +77,14 @@ class WeightCharts extends React.Component {
             datasetStrokeWidth: 2,
             datasetFill: true,
             responsive: true,
-            legendTemplate: "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){% ><li><span style=\"background-color:<%=datasets[i].strokeColor%>\"></span><%if(datasets[i].label){% ><%=datasets[i].label%><%}%></li><%}%></ul>"};
+            scaleFontSize: 8
+        };
 
         let content = null;
         if(weights instanceof Array && weights.length > 1){
-            content = <Line data={data} options={options} width="1400" height="250" />
+            content = <Line data={data} options={options} width="1360" height="250" />
         }else if(weights instanceof Array && weights.length === 1){
-            content = <div><h4>Please add one more weight so we can display the chart</h4><Line data={data} options={options} width="1400" height="250" /></div>
+            content = <div><h4>Please add one more weight so we can display the chart</h4><Line data={data} options={options} width="1360" height="250" /></div>
         }else{
             content = (
                 <div className="noWeightAlert">
@@ -93,9 +95,9 @@ class WeightCharts extends React.Component {
         }
 
         return (
-            <div>
+            <Card cssClass="chartComponent" cardTitle="Weight Changes Chart">
                 {content}
-            </div>
+            </Card>
         )
     }
 }

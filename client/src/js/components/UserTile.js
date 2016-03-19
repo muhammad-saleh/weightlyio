@@ -5,6 +5,7 @@ import UserStore from '../stores/UserStore';
 import Constants from '../constants/Constants';
 import AddWeight from './AddWeight';
 import FloatingActionButton from 'material-ui/lib/floating-action-button';
+import Card from './common/card';
 
 export default class UserTile extends React.Component {
     componentWillMount() {
@@ -39,7 +40,7 @@ export default class UserTile extends React.Component {
 
     render() {
         return (
-            <div>
+            <Card cssClass="userComponent">
                 <div className="userProfile">
                     <img src={this.profilePic(this.state.user)} alt="User Image" className="img-circle"/>
                 </div>
@@ -50,7 +51,7 @@ export default class UserTile extends React.Component {
                     </div>
                     <div className="addWeightBtn"><AddWeight/></div>
                 </div>
-            </div>
+            </Card>
         )
     }
 }

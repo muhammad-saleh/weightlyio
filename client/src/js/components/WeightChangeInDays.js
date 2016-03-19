@@ -6,6 +6,7 @@ import TextField from 'material-ui/lib/text-field';
 import AppActions from '../actions/AppActions';
 import WeightStore from '../stores/WeightStore';
 import Utils from '../utils/utils';
+import Card from './common/card';
 
 
 class WeightChangeInDays extends React.Component {
@@ -41,7 +42,7 @@ class WeightChangeInDays extends React.Component {
         let content = <div>{this.state.weightChange}</div>
 
         return (
-            <div>
+            <Card cssClass="WeightInDaysComponent" cardTitle="Weight change in last month">
                 {content}
                 <Dialog
                   title="Please add your weight:"
@@ -54,7 +55,7 @@ class WeightChangeInDays extends React.Component {
                       <TextField hintText="Weight in Kilograms" /><br/>
                   </div>
                 </Dialog>
-            </div>
+            </Card>
         )
     }
 }

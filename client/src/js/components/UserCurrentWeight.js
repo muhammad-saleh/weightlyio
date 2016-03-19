@@ -6,6 +6,7 @@ import TextField from 'material-ui/lib/text-field';
 import AppActions from '../actions/AppActions';
 import WeightStore from '../stores/WeightStore';
 import moment from 'moment';
+import Card from './common/card';
 
 class UserCurrentWeight extends React.Component {
     componentWillMount() {
@@ -47,7 +48,7 @@ class UserCurrentWeight extends React.Component {
             content = <div>Sorry, No weight added yet</div>
         }
         return (
-            <div>
+            <Card cssClass="CurrentWeightComponent" cardTitle="Current Weight">
                 {content}
                 <Dialog
                   title="Please add your weight:"
@@ -60,7 +61,7 @@ class UserCurrentWeight extends React.Component {
                       <TextField hintText="Weight in Kilograms" /><br/>
                   </div>
                 </Dialog>
-            </div>
+            </Card>
         )
     }
 }

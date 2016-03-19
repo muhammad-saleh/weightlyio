@@ -6,6 +6,7 @@ import AppActions from '../actions/AppActions';
 import WeightStore from '../stores/WeightStore';
 import UserStore from '../stores/UserStore';
 import FlatButton from 'material-ui/lib/flat-button';
+import Card from './common/card';
 
 import Utils from '../utils/utils';
 
@@ -77,14 +78,14 @@ class UserBMI extends React.Component {
             </div>
         }
         return (
-            <div>
+            <Card cssClass="BMIComponent" cardTitle="Current BMI">
                 {content}
                 <Dialog title="Please add your height:" modal={true} actions={actions} open={this.state.open} onRequestClose={this.handleClose}>
                     <div>
                         <TextField hintText="Height in centimeters" onChange={this.handleHeightChange} /><br/>
                     </div>
                 </Dialog>
-            </div>
+            </Card>
         )
     }
 }

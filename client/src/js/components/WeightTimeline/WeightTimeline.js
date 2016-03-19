@@ -3,6 +3,7 @@ import React from 'react';
 import moment from 'moment';
 import WeightStore from '../../stores/WeightStore';
 import WeightTimelineRow from './WeightTimelineRow';
+import Card from '../common/card';
 
 class WeightTimeline extends React.Component {
     componentWillMount() {
@@ -27,12 +28,12 @@ class WeightTimeline extends React.Component {
             return <WeightTimelineRow key={weightItem.date} weight={weightItem.weight} weightAfter={weightAfter} date={weightItem.date} />;
         })
         return (
-            <div>
+            <Card cssClass="weightTimeline" cardTitle="Weight Changes Timeline">
                 <div className="verDivider"></div>
                 <div className="wtInner">
                     {weightItemsList}
                 </div>
-            </div>
+            </Card>
         )
     }
 }

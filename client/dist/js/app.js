@@ -34585,10 +34585,6 @@
 
 	var _UserStore2 = _interopRequireDefault(_UserStore);
 
-	var _card = __webpack_require__(582);
-
-	var _card2 = _interopRequireDefault(_card);
-
 	var _UserTile = __webpack_require__(583);
 
 	var _UserTile2 = _interopRequireDefault(_UserTile);
@@ -34636,51 +34632,23 @@
 	            return _react2.default.createElement(
 	                'div',
 	                null,
-	                _react2.default.createElement(
-	                    _card2.default,
-	                    { cssClass: 'chartComponent', cardTitle: 'Weight Changes Chart' },
-	                    _react2.default.createElement(_WeightCharts2.default, null)
-	                ),
+	                _react2.default.createElement(_WeightCharts2.default, null),
 	                _react2.default.createElement(
 	                    'div',
 	                    { className: 'row' },
 	                    _react2.default.createElement(
 	                        'div',
 	                        { className: 'col-md-6' },
-	                        _react2.default.createElement(
-	                            _card2.default,
-	                            { cssClass: 'userComponent' },
-	                            _react2.default.createElement(_UserTile2.default, null)
-	                        ),
-	                        _react2.default.createElement(
-	                            _card2.default,
-	                            { cssClass: 'weightTimeline', cardTitle: 'Weight Changes Timeline' },
-	                            _react2.default.createElement(_WeightTimeline2.default, null)
-	                        )
+	                        _react2.default.createElement(_UserTile2.default, null),
+	                        _react2.default.createElement(_WeightTimeline2.default, null)
 	                    ),
 	                    _react2.default.createElement(
 	                        'div',
 	                        { className: 'col-md-6' },
-	                        _react2.default.createElement(
-	                            _card2.default,
-	                            { cssClass: 'CurrentWeightComponent', cardTitle: 'Current Weight' },
-	                            _react2.default.createElement(_UserCurrentWeight2.default, { user: this.props.user })
-	                        ),
-	                        _react2.default.createElement(
-	                            _card2.default,
-	                            { cssClass: 'BMIComponent', cardTitle: 'Current BMI' },
-	                            _react2.default.createElement(_UserBMI2.default, { user: this.props.user })
-	                        ),
-	                        _react2.default.createElement(
-	                            _card2.default,
-	                            { cssClass: 'GoalComponent', cardTitle: 'Weight Goal' },
-	                            _react2.default.createElement(_UserGoal2.default, { user: this.props.user })
-	                        ),
-	                        _react2.default.createElement(
-	                            _card2.default,
-	                            { cssClass: 'WeightInDaysComponent', cardTitle: 'Weight change in last month' },
-	                            _react2.default.createElement(_WeightChangeInDays2.default, { days: '30', user: this.props.user })
-	                        )
+	                        _react2.default.createElement(_UserCurrentWeight2.default, { user: this.props.user }),
+	                        _react2.default.createElement(_UserBMI2.default, { user: this.props.user }),
+	                        _react2.default.createElement(_UserGoal2.default, { user: this.props.user }),
+	                        _react2.default.createElement(_WeightChangeInDays2.default, { days: '30', user: this.props.user })
 	                    )
 	                )
 	            );
@@ -34735,6 +34703,10 @@
 	var _reactFontawesome = __webpack_require__(482);
 
 	var _reactFontawesome2 = _interopRequireDefault(_reactFontawesome);
+
+	var _card = __webpack_require__(582);
+
+	var _card2 = _interopRequireDefault(_card);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -34825,11 +34797,12 @@
 	                datasetStrokeWidth: 2,
 	                datasetFill: true,
 	                responsive: true,
-	                legendTemplate: "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){% ><li><span style=\"background-color:<%=datasets[i].strokeColor%>\"></span><%if(datasets[i].label){% ><%=datasets[i].label%><%}%></li><%}%></ul>" };
+	                scaleFontSize: 8
+	            };
 
 	            var content = null;
 	            if (weights instanceof Array && weights.length > 1) {
-	                content = _react2.default.createElement(_reactChartjs.Line, { data: data, options: options, width: '1400', height: '250' });
+	                content = _react2.default.createElement(_reactChartjs.Line, { data: data, options: options, width: '1360', height: '250' });
 	            } else if (weights instanceof Array && weights.length === 1) {
 	                content = _react2.default.createElement(
 	                    'div',
@@ -34839,7 +34812,7 @@
 	                        null,
 	                        'Please add one more weight so we can display the chart'
 	                    ),
-	                    _react2.default.createElement(_reactChartjs.Line, { data: data, options: options, width: '1400', height: '250' })
+	                    _react2.default.createElement(_reactChartjs.Line, { data: data, options: options, width: '1360', height: '250' })
 	                );
 	            } else {
 	                content = _react2.default.createElement(
@@ -34863,8 +34836,8 @@
 	            }
 
 	            return _react2.default.createElement(
-	                'div',
-	                null,
+	                _card2.default,
+	                { cssClass: 'chartComponent', cardTitle: 'Weight Changes Chart' },
 	                content
 	            );
 	        }
@@ -70155,6 +70128,10 @@
 
 	var _floatingActionButton2 = _interopRequireDefault(_floatingActionButton);
 
+	var _card = __webpack_require__(582);
+
+	var _card2 = _interopRequireDefault(_card);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -70209,8 +70186,8 @@
 	        key: 'render',
 	        value: function render() {
 	            return _react2.default.createElement(
-	                'div',
-	                null,
+	                _card2.default,
+	                { cssClass: 'userComponent' },
 	                _react2.default.createElement(
 	                    'div',
 	                    { className: 'userProfile' },
@@ -70688,6 +70665,10 @@
 
 	var _flatButton2 = _interopRequireDefault(_flatButton);
 
+	var _card = __webpack_require__(582);
+
+	var _card2 = _interopRequireDefault(_card);
+
 	var _utils = __webpack_require__(587);
 
 	var _utils2 = _interopRequireDefault(_utils);
@@ -70787,8 +70768,8 @@
 	                );
 	            }
 	            return _react2.default.createElement(
-	                'div',
-	                null,
+	                _card2.default,
+	                { cssClass: 'BMIComponent', cardTitle: 'Current BMI' },
 	                content,
 	                _react2.default.createElement(
 	                    _dialog2.default,
@@ -70933,6 +70914,10 @@
 
 	var _flatButton2 = _interopRequireDefault(_flatButton);
 
+	var _card = __webpack_require__(582);
+
+	var _card2 = _interopRequireDefault(_card);
+
 	var _utils = __webpack_require__(587);
 
 	var _utils2 = _interopRequireDefault(_utils);
@@ -71035,8 +71020,8 @@
 	                );
 	            }
 	            return _react2.default.createElement(
-	                'div',
-	                null,
+	                _card2.default,
+	                { cssClass: 'GoalComponent', cardTitle: 'Weight Goal' },
 	                content,
 	                _react2.default.createElement(
 	                    _dialog2.default,
@@ -71096,6 +71081,10 @@
 	var _moment = __webpack_require__(483);
 
 	var _moment2 = _interopRequireDefault(_moment);
+
+	var _card = __webpack_require__(582);
+
+	var _card2 = _interopRequireDefault(_card);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -71185,8 +71174,8 @@
 	                );
 	            }
 	            return _react2.default.createElement(
-	                'div',
-	                null,
+	                _card2.default,
+	                { cssClass: 'CurrentWeightComponent', cardTitle: 'Current Weight' },
 	                content,
 	                _react2.default.createElement(
 	                    _dialog2.default,
@@ -71241,6 +71230,10 @@
 
 	var _WeightTimelineRow2 = _interopRequireDefault(_WeightTimelineRow);
 
+	var _card = __webpack_require__(582);
+
+	var _card2 = _interopRequireDefault(_card);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -71285,8 +71278,8 @@
 	                return _react2.default.createElement(_WeightTimelineRow2.default, { key: weightItem.date, weight: weightItem.weight, weightAfter: weightAfter, date: weightItem.date });
 	            });
 	            return _react2.default.createElement(
-	                'div',
-	                null,
+	                _card2.default,
+	                { cssClass: 'weightTimeline', cardTitle: 'Weight Changes Timeline' },
 	                _react2.default.createElement('div', { className: 'verDivider' }),
 	                _react2.default.createElement(
 	                    'div',
@@ -71489,6 +71482,10 @@
 
 	var _utils2 = _interopRequireDefault(_utils);
 
+	var _card = __webpack_require__(582);
+
+	var _card2 = _interopRequireDefault(_card);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -71555,8 +71552,8 @@
 	            );
 
 	            return _react2.default.createElement(
-	                'div',
-	                null,
+	                _card2.default,
+	                { cssClass: 'WeightInDaysComponent', cardTitle: 'Weight change in last month' },
 	                content,
 	                _react2.default.createElement(
 	                    _dialog2.default,

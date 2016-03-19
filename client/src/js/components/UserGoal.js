@@ -6,6 +6,7 @@ import AppActions from '../actions/AppActions';
 import WeightStore from '../stores/WeightStore';
 import UserStore from '../stores/UserStore';
 import FlatButton from 'material-ui/lib/flat-button';
+import Card from './common/card';
 
 import Utils from '../utils/utils';
 
@@ -70,14 +71,14 @@ class UserGoal extends React.Component {
             </div>
         }
         return (
-            <div>
+            <Card cssClass="GoalComponent" cardTitle="Weight Goal">
                 {content}
                 <Dialog title="Please add a goal:" modal={true} actions={actions} open={this.state.open} onRequestClose={this.handleClose}>
                     <div>
                         <TextField hintText="Goal weight in Kilograms" onChange={this.handleGoalChange} /><br/>
                     </div>
                 </Dialog>
-            </div>
+            </Card>
         )
     }
 }
