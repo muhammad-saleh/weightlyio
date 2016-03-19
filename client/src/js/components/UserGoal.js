@@ -33,7 +33,6 @@ class UserGoal extends React.Component {
             } else {
                 userGoal = UserStoreState.user.goal;
             }
-            console.log(UserStore.getState())
             Component.setState({goal: userGoal});
 
         });
