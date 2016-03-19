@@ -39,11 +39,17 @@ class WeightChangeInDays extends React.Component {
 
     render() {
         let actions = <div><RaisedButton label="Cancel" onClick={this.handleClose} /> <RaisedButton label="Submit" secondary={true} /></div>
-        let content = <div>{this.state.weightChange}</div>
+        let weightClass = '';
+
+        if(this.state.weightChange && this.state.weightChange.charAt(0) === '+') {
+            weightClass = 'weightGained';
+        } else if(this.state.weightChange && this.state.weightChange.charAt(0) === '-') {
+            weightClass = 'weightLost';
+        }
 
         return (
             <Card cssClass="WeightInDaysComponent" cardTitle="Weight change in last month">
-                {content}
+                <h1><span className={weightClass}>{this.state.weightChange}</span> KG</h1>
                 <Dialog
                   title="Please add your weight:"
                   modal={false}

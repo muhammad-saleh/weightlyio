@@ -71583,16 +71583,27 @@
 	                ' ',
 	                _react2.default.createElement(_raisedButton2.default, { label: 'Submit', secondary: true })
 	            );
-	            var content = _react2.default.createElement(
-	                'div',
-	                null,
-	                this.state.weightChange
-	            );
+	            var weightClass = '';
+
+	            if (this.state.weightChange && this.state.weightChange.charAt(0) === '+') {
+	                weightClass = 'weightGained';
+	            } else if (this.state.weightChange && this.state.weightChange.charAt(0) === '-') {
+	                weightClass = 'weightLost';
+	            }
 
 	            return _react2.default.createElement(
 	                _card2.default,
 	                { cssClass: 'WeightInDaysComponent', cardTitle: 'Weight change in last month' },
-	                content,
+	                _react2.default.createElement(
+	                    'h1',
+	                    null,
+	                    _react2.default.createElement(
+	                        'span',
+	                        { className: weightClass },
+	                        this.state.weightChange
+	                    ),
+	                    ' KG'
+	                ),
 	                _react2.default.createElement(
 	                    _dialog2.default,
 	                    {

@@ -8108,3 +8108,9 @@ nav {
 @media screen and (min-width: 650px) {
   .userComponent .col-xs-2 {
     width: 11%; } }
+
+.WeightInDaysComponent .weightGained {
+  color: #c62828; }
+
+.WeightInDaysComponent .weightLost {
+  color: #64DD17; }
