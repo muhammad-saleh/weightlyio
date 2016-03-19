@@ -4,6 +4,7 @@ import React from 'react';
 import UserStore from '../stores/UserStore';
 import Constants from '../constants/Constants';
 import AddWeight from './AddWeight';
+import FloatingActionButton from 'material-ui/lib/floating-action-button';
 
 export default class UserTile extends React.Component {
     componentWillMount() {
@@ -38,16 +39,16 @@ export default class UserTile extends React.Component {
 
     render() {
         return (
-            <div className="row">
-                <div className="col-xs-2">
+            <div>
+                <div className="userProfile">
                     <img src={this.profilePic(this.state.user)} alt="User Image" className="img-circle"/>
                 </div>
-                <div className="col-xs-10">
-                    <div>{this.userName(this.state.user)}</div>
-                    <div>
-                        <a href={Constants.LOGOUT_URL}>Logout</a>
+                <div className="allInfo">
+                    <div className="userData">
+                        <div className="userInfo">{this.userName(this.state.user)}</div>
+                        <div className="logoutLink"><a href={Constants.LOGOUT_URL}>Logout</a></div>
                     </div>
-                    <div><AddWeight/></div>
+                    <div className="addWeightBtn"><AddWeight/></div>
                 </div>
             </div>
         )

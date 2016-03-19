@@ -7975,17 +7975,31 @@ nav {
   -moz-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.12);
   -ms-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.12);
   box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.12);
-  padding: 20px; }
+  padding: 20px;
+  padding-top: 0; }
+  .card .cardTitle {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    font-size: 24px;
+    margin: 0 -20px;
+    border-bottom: 1px solid #e3e3e3;
+    background: #FFF;
+    padding: 25px;
+    position: relative;
+    z-index: 2; }
+    .card .cardTitle h4 {
+      margin: 0; }
 
 .weightTimeline {
-  padding: 0px;
   overflow: hidden;
-  position: relative; }
+  position: relative;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400; }
   .weightTimeline .verDivider {
     position: absolute;
     top: 0px;
     left: 30%;
-    background: #CCC;
+    background: #F5F5F5;
     width: 2px;
     height: 1000px;
     z-index: 1; }
@@ -7993,16 +8007,18 @@ nav {
     overflow: auto;
     position: relative;
     padding: 20px;
-    max-height: 600px; }
+    max-height: 600px;
+    color: #383838; }
     .weightTimeline .wtInner .weightRow {
-      background: #F9F9F9;
-      padding: 5px;
-      height: 60px;
+      border: 1px solid #e3e3e3;
+      padding: 10px;
+      height: 80px;
       overflow: hidden;
+      margin: 0 -20px;
       margin-bottom: 5px;
       position: relative; }
       .weightTimeline .wtInner .weightRow .rowCircle {
-        background: #a2a2a2;
+        background: #F5F5F5;
         width: 14px;
         height: 14px;
         position: absolute;
@@ -8015,3 +8031,68 @@ nav {
         -ms-border-radius: 50%;
         border-radius: 50%;
         z-index: 2; }
+      .weightTimeline .wtInner .weightRow .rowBorder {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 5px;
+        height: 100%;
+        background: #CDDC39; }
+      .weightTimeline .wtInner .weightRow .wtLeft {
+        width: 28%;
+        float: left;
+        padding-top: 10px;
+        padding-left: 5px; }
+        .weightTimeline .wtInner .weightRow .wtLeft .wtDate1 {
+          font-weight: 600; }
+      .weightTimeline .wtInner .weightRow .wtRight {
+        width: 68%;
+        float: right;
+        padding-top: 10px;
+        padding-left: 5px; }
+        .weightTimeline .wtInner .weightRow .wtRight .wtWeight {
+          font-weight: 600;
+          float: left;
+          line-height: 40px;
+          font-size: 25px; }
+        .weightTimeline .wtInner .weightRow .wtRight .wtBMI {
+          float: right;
+          line-height: 40px; }
+        .weightTimeline .wtInner .weightRow .wtRight .wtSymbol {
+          display: inline-block;
+          margin-right: 15px; }
+          .weightTimeline .wtInner .weightRow .wtRight .wtSymbol.equal {
+            color: #2490df;
+            font-size: 40px; }
+          .weightTimeline .wtInner .weightRow .wtRight .wtSymbol .fa-chevron-up {
+            color: #c62828; }
+          .weightTimeline .wtInner .weightRow .wtRight .wtSymbol .fa-chevron-down {
+            color: #64DD17; }
+
+.userComponent {
+  height: 90px;
+  padding-top: 20px;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  position: relative;
+  padding-left: 90px; }
+  .userComponent .userProfile {
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    width: 50px;
+    height: 50px; }
+    .userComponent .userProfile img {
+      max-width: 100%; }
+  .userComponent .allInfo {
+    padding-top: 8px; }
+  .userComponent .addWeightBtn {
+    float: right; }
+  .userComponent .userData {
+    float: left; }
+    .userComponent .userData .userInfo {
+      font-weight: 600; }
+
+@media screen and (min-width: 650px) {
+  .userComponent .col-xs-2 {
+    width: 11%; } }

@@ -19,9 +19,13 @@ class WeightTimeline extends React.Component {
 
     render() {
         let weightArray = this.state.weight;
-        var weightItemsList = weightArray.reverse().map(function(weightItem){
-                            return <WeightTimelineRow key={weightItem.date} weight={weightItem.weight} date={weightItem.date} />;
-                      })
+        var weightItemsList = weightArray.reverse().map(function(weightItem, index){
+            let weightAfter = null;
+            if(weightArray[index+1] && weightArray[index+1].weight) {
+                weightAfter = weightArray[index+1].weight;
+            }
+            return <WeightTimelineRow key={weightItem.date} weight={weightItem.weight} weightAfter={weightAfter} date={weightItem.date} />;
+        })
         return (
             <div>
                 <div className="verDivider"></div>

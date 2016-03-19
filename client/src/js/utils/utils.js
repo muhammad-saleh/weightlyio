@@ -33,6 +33,22 @@ class Utils {
 
         return weightChange;
     }
+
+    weightDifferenceSymbol(weight1, weight2){
+        if(weight1 && weight2 && !isNaN(parseInt(weight1)) && !isNaN(parseInt(weight2))) {
+            let w1 = parseInt(weight1);
+            let w2 = parseInt(weight2);
+            if( (w2 - w1) > 0 ) {
+                return 'chevron-up'
+            } else if( (w2 - w1) < 0 ) {
+                return 'chevron-down';
+            } else if( w2 === w1 ) {
+                return '=';
+            } else {
+                return '';
+            }
+        }
+    }
 }
 
 export default new Utils;

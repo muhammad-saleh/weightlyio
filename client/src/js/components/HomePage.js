@@ -16,7 +16,7 @@ class HomePage extends React.Component {
     render() {
         return (
             <div>
-                <Card cssClass="chartComponent" cardIcon="tachometer" cardTitle="Weight Change Chart">
+                <Card cssClass="chartComponent" cardTitle="Weight Changes Chart">
                     <WeightCharts />
                 </Card>
                 <div className="row">
@@ -24,21 +24,21 @@ class HomePage extends React.Component {
                         <Card cssClass="userComponent">
                             <UserTile />
                         </Card>
-                        <Card cssClass="weightTimeline">
+                        <Card cssClass="weightTimeline" cardTitle="Weight Changes Timeline">
                             <WeightTimeline />
                         </Card>
                     </div>
                     <div className="col-md-6">
-                        <Card cssClass="CurrentWeightComponent" cardIcon="tachometer" cardTitle="Your current weight">
+                        <Card cssClass="CurrentWeightComponent" cardTitle="Current Weight">
                             <UserCurrentWeight user={this.props.user} />
                         </Card>
-                        <Card cssClass="BMIComponent" cardIcon="tachometer" cardTitle="Your current BMI">
+                        <Card cssClass="BMIComponent" cardTitle="Current BMI">
                             <UserBMI user={this.props.user} />
                         </Card>
-                        <Card cssClass="GoalComponent" cardIcon="tachometer" cardTitle="Your current goal">
+                        <Card cssClass="GoalComponent" cardTitle="Weight Goal">
                             <UserGoal user={this.props.user} />
                         </Card>
-                        <Card cssClass="WeightInDaysComponent" cardIcon="tachometer" cardTitle="Weight change in last month">
+                        <Card cssClass="WeightInDaysComponent" cardTitle="Weight change in last month">
                             <WeightChangeInDays days="30" user={this.props.user} />
                         </Card>
                     </div>
