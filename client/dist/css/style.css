@@ -7994,7 +7994,10 @@ nav {
     position: relative;
     z-index: 2; }
     .card .cardTitle h4 {
-      margin: 0; }
+      margin: 0;
+      display: inline; }
+    .card .cardTitle .titleAction {
+      float: right; }
 
 .weightTimeline {
   overflow: hidden;

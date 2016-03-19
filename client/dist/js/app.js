@@ -34802,7 +34802,7 @@
 
 	            var content = null;
 	            if (weights instanceof Array && weights.length > 1) {
-	                content = _react2.default.createElement(_reactChartjs.Line, { data: data, options: options, width: '1360', height: '250' });
+	                content = _react2.default.createElement(_reactChartjs.Line, { data: data, options: options, width: '1400', height: '250' });
 	            } else if (weights instanceof Array && weights.length === 1) {
 	                content = _react2.default.createElement(
 	                    'div',
@@ -34812,7 +34812,7 @@
 	                        null,
 	                        'Please add one more weight so we can display the chart'
 	                    ),
-	                    _react2.default.createElement(_reactChartjs.Line, { data: data, options: options, width: '1360', height: '250' })
+	                    _react2.default.createElement(_reactChartjs.Line, { data: data, options: options, width: '1400', height: '250' })
 	                );
 	            } else {
 	                content = _react2.default.createElement(
@@ -34838,7 +34838,11 @@
 	            return _react2.default.createElement(
 	                _card2.default,
 	                { cssClass: 'chartComponent', cardTitle: 'Weight Changes Chart' },
-	                content
+	                _react2.default.createElement(
+	                    'div',
+	                    null,
+	                    content
+	                )
 	            );
 	        }
 	    }]);
@@ -70918,6 +70922,10 @@
 
 	var _card2 = _interopRequireDefault(_card);
 
+	var _reactFontawesome = __webpack_require__(482);
+
+	var _reactFontawesome2 = _interopRequireDefault(_reactFontawesome);
+
 	var _utils = __webpack_require__(587);
 
 	var _utils2 = _interopRequireDefault(_utils);
@@ -70997,13 +71005,8 @@
 	                    _react2.default.createElement(
 	                        'h1',
 	                        null,
-	                        this.state.goal
-	                    ),
-	                    _react2.default.createElement('br', null),
-	                    _react2.default.createElement(
-	                        'button',
-	                        { className: 'btn btn-primary', onClick: this.handleOpen },
-	                        'Update Goal'
+	                        this.state.goal,
+	                        ' KG'
 	                    )
 	                );
 	            } else {
@@ -71021,7 +71024,27 @@
 	            }
 	            return _react2.default.createElement(
 	                _card2.default,
-	                { cssClass: 'GoalComponent', cardTitle: 'Weight Goal' },
+	                { cssClass: 'GoalComponent' },
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'cardTitle' },
+	                    _react2.default.createElement(
+	                        'h4',
+	                        null,
+	                        'Weight Goal'
+	                    ),
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'titleAction' },
+	                        _react2.default.createElement(_flatButton2.default, {
+	                            label: 'Add / Change Goal',
+	                            labelPosition: 'after',
+	                            primary: true,
+	                            onClick: this.handleOpen,
+	                            icon: _react2.default.createElement(_reactFontawesome2.default, { name: 'plus' })
+	                        })
+	                    )
+	                ),
 	                content,
 	                _react2.default.createElement(
 	                    _dialog2.default,
@@ -71371,6 +71394,8 @@
 	            var height = _UserStore2.default.getState().user.height;
 	            var weightIcon = null;
 	            var weightEqualClass = '';
+	            // let colorsArray = ["01579B","0277BD","0288D1","039BE5","03A9F4","29B6F6","4FC3F7"];
+	            // let bgColor = {background:'#'+colorsArray[Math.floor(Math.random()*colorsArray.length)]}
 
 	            if (this.props.weightAfter) {
 	                weightIcon = _utils2.default.weightDifferenceSymbol(this.props.weightAfter, this.props.weight);

@@ -7,6 +7,7 @@ import WeightStore from '../stores/WeightStore';
 import UserStore from '../stores/UserStore';
 import FlatButton from 'material-ui/lib/flat-button';
 import Card from './common/card';
+import FontAwesome from 'react-fontawesome';
 
 import Utils from '../utils/utils';
 
@@ -64,14 +65,26 @@ class UserGoal extends React.Component {
         ];
 
         if (this.props && this.props.user && this.props.user.goal) {
-            content = <div><h1>{this.state.goal}</h1><br/><button className="btn btn-primary" onClick={this.handleOpen}>Update Goal</button></div>
+            content = <div><h1><span className="goalTrophy"><FontAwesome name="trophy" style={{color:'#F9A825'}} /></span> {this.state.goal} KG</h1></div>
         } else {
             content = <div>Add a goal:<br/>
                 <button className="btn btn-primary" onClick={this.handleOpen}>Add Goal</button>
             </div>
         }
         return (
-            <Card cssClass="GoalComponent" cardTitle="Weight Goal">
+            <Card cssClass="GoalComponent">
+                <div className="cardTitle">
+                    <h4>Weight Goal</h4>
+                    <div className="titleAction">
+                        <FlatButton
+                          label="Add / Change Goal"
+                          labelPosition="after"
+                          secondary={true}
+                          onClick={this.handleOpen}
+                          icon={<FontAwesome name="plus" />}
+                        />
+                    </div>
+                </div>
                 {content}
                 <Dialog title="Please add a goal:" modal={true} actions={actions} open={this.state.open} onRequestClose={this.handleClose}>
                     <div>
