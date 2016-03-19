@@ -82,9 +82,9 @@ class WeightCharts extends React.Component {
 
         let content = null;
         if(weights instanceof Array && weights.length > 1){
-            content = <Line data={data} options={options} width="1360" height="250" />
+            content = <Line data={data} options={options} width="1400" height="250" />
         }else if(weights instanceof Array && weights.length === 1){
-            content = <div><h4>Please add one more weight so we can display the chart</h4><Line data={data} options={options} width="1360" height="250" /></div>
+            content = <div><h4>Please add one more weight so we can display the chart</h4><Line data={data} options={options} width="1400" height="250" /></div>
         }else{
             content = (
                 <div className="noWeightAlert">
@@ -96,7 +96,9 @@ class WeightCharts extends React.Component {
 
         return (
             <Card cssClass="chartComponent" cardTitle="Weight Changes Chart">
-                {content}
+                <div>
+                    {content}
+                </div>
             </Card>
         )
     }

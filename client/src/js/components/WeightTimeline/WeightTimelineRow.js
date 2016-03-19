@@ -16,6 +16,9 @@ class WeightTimelineRow extends React.Component {
         let height = UserStore.getState().user.height;
         let weightIcon = null;
         let weightEqualClass = '';
+        // let colorsArray = ["01579B","0277BD","0288D1","039BE5","03A9F4","29B6F6","4FC3F7"];
+        // let bgColor = {background:'#'+colorsArray[Math.floor(Math.random()*colorsArray.length)]}
+
 
         if(this.props.weightAfter) {
             weightIcon = Utils.weightDifferenceSymbol(this.props.weightAfter, this.props.weight);
