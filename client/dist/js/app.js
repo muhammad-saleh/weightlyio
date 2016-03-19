@@ -7420,7 +7420,7 @@
 
 	var _App2 = _interopRequireDefault(_App);
 
-	var _Routes = __webpack_require__(620);
+	var _Routes = __webpack_require__(619);
 
 	var _Routes2 = _interopRequireDefault(_Routes);
 
@@ -32013,11 +32013,11 @@
 
 	var _reactFontawesome2 = _interopRequireDefault(_reactFontawesome);
 
-	var _classnames = __webpack_require__(614);
+	var _classnames = __webpack_require__(613);
 
 	var _classnames2 = _interopRequireDefault(_classnames);
 
-	var _reactTapEventPlugin = __webpack_require__(615);
+	var _reactTapEventPlugin = __webpack_require__(614);
 
 	var _reactTapEventPlugin2 = _interopRequireDefault(_reactTapEventPlugin);
 
@@ -34456,23 +34456,23 @@
 
 	var _HomePage2 = _interopRequireDefault(_HomePage);
 
-	var _LoginPage = __webpack_require__(594);
+	var _LoginPage = __webpack_require__(593);
 
 	var _LoginPage2 = _interopRequireDefault(_LoginPage);
 
-	var _NavLoggedInItems = __webpack_require__(595);
+	var _NavLoggedInItems = __webpack_require__(594);
 
 	var _NavLoggedInItems2 = _interopRequireDefault(_NavLoggedInItems);
 
-	var _NavNotLoggedInItems = __webpack_require__(612);
+	var _NavNotLoggedInItems = __webpack_require__(611);
 
 	var _NavNotLoggedInItems2 = _interopRequireDefault(_NavNotLoggedInItems);
 
-	var _leftNav = __webpack_require__(613);
+	var _leftNav = __webpack_require__(612);
 
 	var _leftNav2 = _interopRequireDefault(_leftNav);
 
-	var _menuItem = __webpack_require__(596);
+	var _menuItem = __webpack_require__(595);
 
 	var _menuItem2 = _interopRequireDefault(_menuItem);
 
@@ -34605,7 +34605,7 @@
 
 	var _WeightTimeline2 = _interopRequireDefault(_WeightTimeline);
 
-	var _WeightChangeInDays = __webpack_require__(593);
+	var _WeightChangeInDays = __webpack_require__(592);
 
 	var _WeightChangeInDays2 = _interopRequireDefault(_WeightChangeInDays);
 
@@ -71005,6 +71005,12 @@
 	                    _react2.default.createElement(
 	                        'h1',
 	                        null,
+	                        _react2.default.createElement(
+	                            'span',
+	                            { className: 'goalTrophy' },
+	                            _react2.default.createElement(_reactFontawesome2.default, { name: 'trophy', style: { color: '#F9A825' } })
+	                        ),
+	                        ' ',
 	                        this.state.goal,
 	                        ' KG'
 	                    )
@@ -71039,7 +71045,7 @@
 	                        _react2.default.createElement(_flatButton2.default, {
 	                            label: 'Add / Change Goal',
 	                            labelPosition: 'after',
-	                            primary: true,
+	                            secondary: true,
 	                            onClick: this.handleOpen,
 	                            icon: _react2.default.createElement(_reactFontawesome2.default, { name: 'plus' })
 	                        })
@@ -71109,6 +71115,10 @@
 
 	var _card2 = _interopRequireDefault(_card);
 
+	var _utils = __webpack_require__(587);
+
+	var _utils2 = _interopRequireDefault(_utils);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -71172,13 +71182,29 @@
 
 	            if (this.state && this.state.currentWeight) {
 	                var date = new Date(String(this.state.weight[0].date));
+	                var weightIcon = null;
+	                var weightEqualClass = '';
 	                date = (0, _moment2.default)(date).format("MMM Do YYYY");
+
+	                weightIcon = _utils2.default.weightDifferenceSymbol(this.state.weight[1].date, this.state.weight[0].date);
+	                if (weightIcon === '=') {
+	                    weightIcon = '=';
+	                    weightEqualClass = 'equal';
+	                } else {
+	                    weightIcon = _react2.default.createElement(FontAwesome, { name: weightIcon });
+	                }
 	                content = _react2.default.createElement(
 	                    'div',
 	                    null,
 	                    _react2.default.createElement(
 	                        'h1',
 	                        null,
+	                        _react2.default.createElement(
+	                            'span',
+	                            { className: 'wtSymbol ' + weightEqualClass },
+	                            weightIcon,
+	                            ' '
+	                        ),
 	                        this.state.currentWeight,
 	                        ' KG'
 	                    ),
@@ -71366,10 +71392,6 @@
 
 	var _reactFontawesome2 = _interopRequireDefault(_reactFontawesome);
 
-	var _server = __webpack_require__(592);
-
-	var _server2 = _interopRequireDefault(_server);
-
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -71460,15 +71482,6 @@
 
 /***/ },
 /* 592 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	module.exports = __webpack_require__(221);
-
-
-/***/ },
-/* 593 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -71606,7 +71619,7 @@
 	exports.default = WeightChangeInDays;
 
 /***/ },
-/* 594 */
+/* 593 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -71657,7 +71670,7 @@
 	exports.default = LoginPage;
 
 /***/ },
-/* 595 */
+/* 594 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -71678,11 +71691,11 @@
 
 	var _HomePage2 = _interopRequireDefault(_HomePage);
 
-	var _LoginPage = __webpack_require__(594);
+	var _LoginPage = __webpack_require__(593);
 
 	var _LoginPage2 = _interopRequireDefault(_LoginPage);
 
-	var _menuItem = __webpack_require__(596);
+	var _menuItem = __webpack_require__(595);
 
 	var _menuItem2 = _interopRequireDefault(_menuItem);
 
@@ -71755,7 +71768,7 @@
 	exports.default = NavLoggedInItems;
 
 /***/ },
-/* 596 */
+/* 595 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -71782,15 +71795,15 @@
 
 	var _reactAddonsPureRenderMixin2 = _interopRequireDefault(_reactAddonsPureRenderMixin);
 
-	var _popover = __webpack_require__(597);
+	var _popover = __webpack_require__(596);
 
 	var _popover2 = _interopRequireDefault(_popover);
 
-	var _check = __webpack_require__(601);
+	var _check = __webpack_require__(600);
 
 	var _check2 = _interopRequireDefault(_check);
 
-	var _listItem = __webpack_require__(602);
+	var _listItem = __webpack_require__(601);
 
 	var _listItem2 = _interopRequireDefault(_listItem);
 
@@ -71798,7 +71811,7 @@
 
 	var _getMuiTheme2 = _interopRequireDefault(_getMuiTheme);
 
-	var _menu = __webpack_require__(610);
+	var _menu = __webpack_require__(609);
 
 	var _menu2 = _interopRequireDefault(_menu);
 
@@ -72109,7 +72122,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 597 */
+/* 596 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -72144,7 +72157,7 @@
 
 	var _paper2 = _interopRequireDefault(_paper);
 
-	var _lodash = __webpack_require__(598);
+	var _lodash = __webpack_require__(597);
 
 	var _lodash2 = _interopRequireDefault(_lodash);
 
@@ -72152,7 +72165,7 @@
 
 	var _getMuiTheme2 = _interopRequireDefault(_getMuiTheme);
 
-	var _popoverDefaultAnimation = __webpack_require__(600);
+	var _popoverDefaultAnimation = __webpack_require__(599);
 
 	var _popoverDefaultAnimation2 = _interopRequireDefault(_popoverDefaultAnimation);
 
@@ -72543,7 +72556,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 598 */
+/* 597 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -72554,7 +72567,7 @@
 	 * Copyright 2009-2016 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
 	 * Available under MIT license <https://lodash.com/license>
 	 */
-	var debounce = __webpack_require__(599);
+	var debounce = __webpack_require__(598);
 
 	/** Used as the `TypeError` message for "Functions" methods. */
 	var FUNC_ERROR_TEXT = 'Expected a function';
@@ -72649,7 +72662,7 @@
 
 
 /***/ },
-/* 599 */
+/* 598 */
 /***/ function(module, exports) {
 
 	/**
@@ -72975,7 +72988,7 @@
 
 
 /***/ },
-/* 600 */
+/* 599 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -73134,7 +73147,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 601 */
+/* 600 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -73171,7 +73184,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 602 */
+/* 601 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -73214,15 +73227,15 @@
 
 	var _iconButton2 = _interopRequireDefault(_iconButton);
 
-	var _arrowDropUp = __webpack_require__(603);
+	var _arrowDropUp = __webpack_require__(602);
 
 	var _arrowDropUp2 = _interopRequireDefault(_arrowDropUp);
 
-	var _arrowDropDown = __webpack_require__(604);
+	var _arrowDropDown = __webpack_require__(603);
 
 	var _arrowDropDown2 = _interopRequireDefault(_arrowDropDown);
 
-	var _nestedList = __webpack_require__(605);
+	var _nestedList = __webpack_require__(604);
 
 	var _nestedList2 = _interopRequireDefault(_nestedList);
 
@@ -73832,7 +73845,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 603 */
+/* 602 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -73869,7 +73882,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 604 */
+/* 603 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -73906,7 +73919,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 605 */
+/* 604 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -73925,7 +73938,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _list = __webpack_require__(606);
+	var _list = __webpack_require__(605);
 
 	var _list2 = _interopRequireDefault(_list);
 
@@ -73995,7 +74008,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 606 */
+/* 605 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -74030,7 +74043,7 @@
 
 	var _getMuiTheme2 = _interopRequireDefault(_getMuiTheme);
 
-	var _Subheader = __webpack_require__(607);
+	var _Subheader = __webpack_require__(606);
 
 	var _Subheader2 = _interopRequireDefault(_Subheader);
 
@@ -74160,7 +74173,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 607 */
+/* 606 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -74169,7 +74182,7 @@
 	  value: true
 	});
 
-	var _Subheader = __webpack_require__(608);
+	var _Subheader = __webpack_require__(607);
 
 	var _Subheader2 = _interopRequireDefault(_Subheader);
 
@@ -74179,7 +74192,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 608 */
+/* 607 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -74198,7 +74211,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _muiThemeable = __webpack_require__(609);
+	var _muiThemeable = __webpack_require__(608);
 
 	var _muiThemeable2 = _interopRequireDefault(_muiThemeable);
 
@@ -74274,7 +74287,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 609 */
+/* 608 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -74326,7 +74339,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 610 */
+/* 609 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -74353,7 +74366,7 @@
 
 	var _reactAddonsUpdate2 = _interopRequireDefault(_reactAddonsUpdate);
 
-	var _ClickAwayListener = __webpack_require__(611);
+	var _ClickAwayListener = __webpack_require__(610);
 
 	var _ClickAwayListener2 = _interopRequireDefault(_ClickAwayListener);
 
@@ -74373,7 +74386,7 @@
 
 	var _propTypes2 = _interopRequireDefault(_propTypes);
 
-	var _list = __webpack_require__(606);
+	var _list = __webpack_require__(605);
 
 	var _list2 = _interopRequireDefault(_list);
 
@@ -74960,7 +74973,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 611 */
+/* 610 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -75077,7 +75090,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 612 */
+/* 611 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -75098,11 +75111,11 @@
 
 	var _HomePage2 = _interopRequireDefault(_HomePage);
 
-	var _LoginPage = __webpack_require__(594);
+	var _LoginPage = __webpack_require__(593);
 
 	var _LoginPage2 = _interopRequireDefault(_LoginPage);
 
-	var _menuItem = __webpack_require__(596);
+	var _menuItem = __webpack_require__(595);
 
 	var _menuItem2 = _interopRequireDefault(_menuItem);
 
@@ -75157,7 +75170,7 @@
 	exports.default = NavNotLoggedInItems;
 
 /***/ },
-/* 613 */
+/* 612 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -75593,7 +75606,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 614 */
+/* 613 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -75647,23 +75660,23 @@
 
 
 /***/ },
-/* 615 */
+/* 614 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var defaultClickRejectionStrategy = __webpack_require__(616);
+	var defaultClickRejectionStrategy = __webpack_require__(615);
 
 	module.exports = function injectTapEventPlugin (strategyOverrides) {
 	  strategyOverrides = strategyOverrides || {}
 	  var shouldRejectClick = strategyOverrides.shouldRejectClick || defaultClickRejectionStrategy;
 
 	  __webpack_require__(104).injection.injectEventPluginsByName({
-	    "TapEventPlugin":       __webpack_require__(617)(shouldRejectClick)
+	    "TapEventPlugin":       __webpack_require__(616)(shouldRejectClick)
 	  });
 	};
 
 
 /***/ },
-/* 616 */
+/* 615 */
 /***/ function(module, exports) {
 
 	module.exports = function(lastTouchEvent, clickTimestamp) {
@@ -75674,7 +75687,7 @@
 
 
 /***/ },
-/* 617 */
+/* 616 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -75702,10 +75715,10 @@
 	var EventPluginUtils = __webpack_require__(106);
 	var EventPropagators = __webpack_require__(146);
 	var SyntheticUIEvent = __webpack_require__(160);
-	var TouchEventUtils = __webpack_require__(618);
+	var TouchEventUtils = __webpack_require__(617);
 	var ViewportMetrics = __webpack_require__(111);
 
-	var keyOf = __webpack_require__(619);
+	var keyOf = __webpack_require__(618);
 	var topLevelTypes = EventConstants.topLevelTypes;
 
 	var isStartish = EventPluginUtils.isStartish;
@@ -75851,7 +75864,7 @@
 
 
 /***/ },
-/* 618 */
+/* 617 */
 /***/ function(module, exports) {
 
 	/**
@@ -75899,7 +75912,7 @@
 
 
 /***/ },
-/* 619 */
+/* 618 */
 /***/ function(module, exports) {
 
 	/**
@@ -75939,7 +75952,7 @@
 	module.exports = keyOf;
 
 /***/ },
-/* 620 */
+/* 619 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -75960,7 +75973,7 @@
 
 	var _App2 = _interopRequireDefault(_App);
 
-	var _LoginPage = __webpack_require__(594);
+	var _LoginPage = __webpack_require__(593);
 
 	var _LoginPage2 = _interopRequireDefault(_LoginPage);
 

@@ -8,7 +8,6 @@ import WeightStore from '../../stores/WeightStore';
 import UserStore from '../../stores/UserStore';
 import Utils from '../../utils/utils';
 import FontAwesome from 'react-fontawesome';
-import ReactDOMServer from 'react-dom/server';
 
 class WeightTimelineRow extends React.Component {
     render() {

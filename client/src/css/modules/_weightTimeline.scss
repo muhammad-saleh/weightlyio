@@ -74,21 +74,22 @@
                     float: right;
                     line-height: 40px;
                 }
-                .wtSymbol {
-                    display: inline-block;
-                    margin-right: 15px;
-                    &.equal {
-                        color: #2490df;
-                        font-size: 40px;
-                    }
-                    .fa-chevron-up {
-                        color: #c62828
-                    }
-                    .fa-chevron-down {
-                        color: #64DD17;
-                    }
-                }
             }
         }
+    }
+}
+
+.wtSymbol {
+    display: inline-block;
+    margin-right: 15px;
+    &.equal {
+        color: #2490df;
+        font-size: 40px;
+    }
+    .fa-chevron-up {
+        color: #c62828
+    }
+    .fa-chevron-down {
+        color: #64DD17;
     }
 }

@@ -8067,16 +8067,17 @@ nav {
         .weightTimeline .wtInner .weightRow .wtRight .wtBMI {
           float: right;
           line-height: 40px; }
-        .weightTimeline .wtInner .weightRow .wtRight .wtSymbol {
-          display: inline-block;
-          margin-right: 15px; }
-          .weightTimeline .wtInner .weightRow .wtRight .wtSymbol.equal {
-            color: #2490df;
-            font-size: 40px; }
-          .weightTimeline .wtInner .weightRow .wtRight .wtSymbol .fa-chevron-up {
-            color: #c62828; }
-          .weightTimeline .wtInner .weightRow .wtRight .wtSymbol .fa-chevron-down {
-            color: #64DD17; }
+
+.wtSymbol {
+  display: inline-block;
+  margin-right: 15px; }
+  .wtSymbol.equal {
+    color: #2490df;
+    font-size: 40px; }
+  .wtSymbol .fa-chevron-up {
+    color: #c62828; }
+  .wtSymbol .fa-chevron-down {
+    color: #64DD17; }
 
 .userComponent {
   height: 90px;

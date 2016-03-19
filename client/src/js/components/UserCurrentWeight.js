@@ -7,6 +7,7 @@ import AppActions from '../actions/AppActions';
 import WeightStore from '../stores/WeightStore';
 import moment from 'moment';
 import Card from './common/card';
+import Utils from '../utils/utils';
 
 class UserCurrentWeight extends React.Component {
     componentWillMount() {
@@ -42,8 +43,18 @@ class UserCurrentWeight extends React.Component {
 
         if(this.state && this.state.currentWeight) {
             let date = new Date(String(this.state.weight[0].date));
+            let weightIcon = null;
+            let weightEqualClass = '';
             date = moment(date).format("MMM Do YYYY");
-            content = <div><h1>{this.state.currentWeight} KG</h1><small>On {date}</small></div>
+
+            weightIcon = Utils.weightDifferenceSymbol(this.state.weight[1].date, this.state.weight[0].date);
+            if(weightIcon === '=') {
+                weightIcon = '=';
+                weightEqualClass = 'equal';
+            } else {
+                weightIcon = <FontAwesome name={weightIcon} />
+            }
+            content = <div><h1><span className={'wtSymbol ' + weightEqualClass}>{weightIcon} </span>{this.state.currentWeight} KG</h1><small>On {date}</small></div>
         }else{
             content = <div>Sorry, No weight added yet</div>
         }
