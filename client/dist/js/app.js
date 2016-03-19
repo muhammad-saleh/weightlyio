@@ -34757,7 +34757,7 @@
 	        value: function extractDates(arr) {
 	            if (Array.isArray(arr)) {
 	                var datesArray = arr.map(function (obj) {
-	                    return (0, _moment2.default)(obj.date).format("MMM DD YYYY");
+	                    return (0, _moment2.default)(obj.date).format("DD MMM");
 	                });
 	                return datesArray;
 	            } else {
@@ -34782,7 +34782,7 @@
 	            };
 
 	            var options = {
-	                scaleShowGridLines: true,
+	                scaleShowGridLines: false,
 	                scaleGridLineColor: "rgba(0,0,0,.05)",
 	                scaleGridLineWidth: 1,
 	                scaleShowHorizontalLines: true,
@@ -71119,6 +71119,10 @@
 
 	var _utils2 = _interopRequireDefault(_utils);
 
+	var _reactFontawesome = __webpack_require__(482);
+
+	var _reactFontawesome2 = _interopRequireDefault(_reactFontawesome);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -71186,12 +71190,12 @@
 	                var weightEqualClass = '';
 	                date = (0, _moment2.default)(date).format("MMM Do YYYY");
 
-	                weightIcon = _utils2.default.weightDifferenceSymbol(this.state.weight[1].date, this.state.weight[0].date);
+	                weightIcon = _utils2.default.weightDifferenceSymbol(this.state.weight[1].weight, this.state.weight[0].weight);
 	                if (weightIcon === '=') {
 	                    weightIcon = '=';
 	                    weightEqualClass = 'equal';
 	                } else {
-	                    weightIcon = _react2.default.createElement(FontAwesome, { name: weightIcon });
+	                    weightIcon = _react2.default.createElement(_reactFontawesome2.default, { name: weightIcon });
 	                }
 	                content = _react2.default.createElement(
 	                    'div',

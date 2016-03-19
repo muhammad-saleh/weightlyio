@@ -36,7 +36,7 @@ class WeightCharts extends React.Component {
     extractDates(arr) {
         if (Array.isArray(arr)) {
             let datesArray = arr.map(function(obj) {
-                return moment(obj.date).format("MMM DD YYYY");
+                return moment(obj.date).format("DD MMM");
             });
             return datesArray;
         } else {
@@ -62,7 +62,7 @@ class WeightCharts extends React.Component {
         };
 
         let options = {
-            scaleShowGridLines: true,
+            scaleShowGridLines: false,
             scaleGridLineColor: "rgba(0,0,0,.05)",
             scaleGridLineWidth: 1,
             scaleShowHorizontalLines: true,
