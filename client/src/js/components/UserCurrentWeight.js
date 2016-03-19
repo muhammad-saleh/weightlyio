@@ -48,7 +48,12 @@ class UserCurrentWeight extends React.Component {
             let weightEqualClass = '';
             date = moment(date).format("MMM Do YYYY");
 
-            weightIcon = Utils.weightDifferenceSymbol(this.state.weight[1].weight, this.state.weight[0].weight);
+            if(this.state.weight[1]){
+                weightIcon = Utils.weightDifferenceSymbol(this.state.weight[1].weight, this.state.weight[0].weight);
+            }else {
+                weightIcon = Utils.weightDifferenceSymbol(this.state.weight[0].weight, this.state.weight[0].weight);
+            }
+
             if(weightIcon === '=') {
                 weightIcon = '=';
                 weightEqualClass = 'equal';
