@@ -32,7 +32,7 @@ export default class UserTile extends React.Component {
                     return user.data.first_name + ' ' + user.data.last_name
                     break;
                 default:
-                    return `http://placehold.it/50x50`
+                    return user.username
 
             }
         }

@@ -59,7 +59,8 @@ exports.getUser = function (req, res) {
             provider: user.provider,
             height: user.height || null,
             goal: user.goal || null,
-            data: user[user.provider]
+            data: user[user.provider],
+            username: user.username
         };
         // returned_user.data.provider = user.provider || 'local';
         res.send(returned_user);
