@@ -19,8 +19,9 @@ export default class Header extends React.Component {
         return(
             <header>
                 <div className="title">
-                    <h1>Weightly</h1>
-                    <h3>Your way to healthier life</h3>
+                    <div className="logo">
+                        
+                    </div>
                     {loginRegisterButtons}
                 </div>
 

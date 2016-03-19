@@ -1,5 +1,7 @@
 var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var CopyWebpackPlugin = require('copy-webpack-plugin');
+
 
 module.exports = {
     entry: [
@@ -38,6 +40,7 @@ module.exports = {
         new ExtractTextPlugin('../../dist/css/style.css', {
             allChunks: true
         }),
-        new webpack.optimize.UglifyJsPlugin({minimize: false})
+        new CopyWebpackPlugin([{from: './src/images', to: './dist/images'}])
+        // new webpack.optimize.UglifyJsPlugin({minimize: false})
     ]
 }

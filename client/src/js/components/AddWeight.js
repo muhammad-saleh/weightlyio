@@ -42,7 +42,7 @@ class AddWeight extends React.Component {
 
     return (
           <div>
-            <RaisedButton label="Add Weight" icon={<FontAwesome name="plus"/>} onClick={this.handleOpen} />
+            <RaisedButton label="Add Weight" secondary={true} icon={<FontAwesome name="plus"/>} onClick={this.handleOpen} />
             <Dialog
               title="Add new weight"
               actions={actions}

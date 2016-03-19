@@ -32169,16 +32169,7 @@
 	                _react2.default.createElement(
 	                    'div',
 	                    { className: 'title' },
-	                    _react2.default.createElement(
-	                        'h1',
-	                        null,
-	                        'Weightly'
-	                    ),
-	                    _react2.default.createElement(
-	                        'h3',
-	                        null,
-	                        'Your way to healthier life'
-	                    ),
+	                    _react2.default.createElement('div', { className: 'logo' }),
 	                    loginRegisterButtons
 	                )
 	            );
@@ -34543,7 +34534,7 @@
 	                null,
 	                _react2.default.createElement(
 	                    _leftNav2.default,
-	                    { open: this.state.navopen, className: 'navRoot', docked: false, onRequestChange: function onRequestChange(navopen) {
+	                    { open: this.state.navopen, style: { zIndex: 9999 }, overlayStyle: { zIndex: 999 }, className: 'navRoot', overlayClassName: 'navRootOverlay', docked: false, onRequestChange: function onRequestChange(navopen) {
 	                            return _this2.setState({ navopen: navopen });
 	                        } },
 	                    _react2.default.createElement(
@@ -38665,7 +38656,7 @@
 	            return _react2.default.createElement(
 	                'div',
 	                null,
-	                _react2.default.createElement(_raisedButton2.default, { label: 'Add Weight', icon: _react2.default.createElement(_reactFontawesome2.default, { name: 'plus' }), onClick: this.handleOpen }),
+	                _react2.default.createElement(_raisedButton2.default, { label: 'Add Weight', secondary: true, icon: _react2.default.createElement(_reactFontawesome2.default, { name: 'plus' }), onClick: this.handleOpen }),
 	                _react2.default.createElement(
 	                    _dialog2.default,
 	                    {

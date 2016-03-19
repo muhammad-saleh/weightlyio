@@ -34,7 +34,7 @@ export default class Nav extends React.Component {
         }
         return (
             <nav>
-                <LeftNav open={this.state.navopen} className="navRoot" docked={false} onRequestChange={navopen => this.setState({navopen})}>
+                <LeftNav open={this.state.navopen} style={{zIndex:9999}} overlayStyle={{zIndex:999}} className="navRoot" overlayClassName="navRootOverlay" docked={false} onRequestChange={navopen => this.setState({navopen})}>
                 <button className="navTrigger" onClick={this.handleToggle}><i className="fa fa-bars"></i></button>
                   {NavItems}
                 </LeftNav>

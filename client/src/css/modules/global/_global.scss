@@ -2,6 +2,8 @@ body {
     background: #F4F4F4;
     .contentContainer {
         padding: 20px;
+        position: relative;
+        z-index: 0;
     }
 }
 
