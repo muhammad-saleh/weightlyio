@@ -4,7 +4,12 @@ const HeightSource = {
         method: "POST",
         url: "http://localhost:3000/height",
         data: { height: data.height },
-        xhrFields: { withCredentials: true },
+        'beforeSend': function(xhr) {
+            if (localStorage.getItem('userToken')) {
+              xhr.setRequestHeader('Authorization',
+                    'Bearer ' + localStorage.getItem('userToken'));
+            }
+        },
         crossDomain: true
     })
   }
