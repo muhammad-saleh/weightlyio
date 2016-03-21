@@ -41,7 +41,7 @@ module.exports = function (app, passport) {
     };
 
 
-    app.get('/user', authCheck, users.getUser);
+    // app.get('/user', authCheck, users.getUser);
 
     app.post('/height', cors(corsOptions), authCheck, users.postHeight);
     app.post('/goal', cors(corsOptions), authCheck, users.postGoal);
