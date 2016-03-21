@@ -31,23 +31,14 @@ const isAuth = [auth.requiresLogin];
  */
 
 module.exports = function (app, passport) {
-
-    var whitelist = ['http://localhost:1111', 'http://localhost:*'];
-    var corsOptions = {
-      origin: function(origin, callback){
-        var originIsWhitelisted = whitelist.indexOf(origin) !== -1;
-        callback(null, originIsWhitelisted);
-      }
-    };
-
-
     // app.get('/user', authCheck, users.getUser);
 
-    app.post('/height', cors(corsOptions), authCheck, users.postHeight);
-    app.post('/goal', cors(corsOptions), authCheck, users.postGoal);
+    app.post('/height', authCheck, users.postHeight);
+    app.post('/goal', authCheck, users.postGoal);
 
     //Weight get
-    app.get('/weight', cors(corsOptions), authCheck, getWeight);
-    app.post('/weight', cors(corsOptions), authCheck, postWeight);
+
+    app.post('/weight', authCheck, postWeight);
+    app.get('/weight', authCheck, getWeight);
 
 };
