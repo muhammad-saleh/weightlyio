@@ -7923,6 +7923,9 @@ body {
     .noWeight .chartComponent.card .noWeightAlert .introText {
       margin: 20px; }
 
+button .fa {
+  color: #FFF; }
+
 header {
   background: transparent;
   color: #FFF;
@@ -8117,3 +8120,14 @@ nav {
 
 .chartComponent .cardTitle {
   margin-bottom: 20px; }
+
+.messagesComponent {
+  border: 1px solid #e3e3e3;
+  padding: 15px;
+  margin: 15px;
+  min-height: 80px; }
+  .messagesComponent .msgTitle {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    margin-bottom: 5px;
+    font-size: 18px; }

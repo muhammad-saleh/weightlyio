@@ -1,0 +1,12 @@
+.messagesComponent {
+        border: 1px solid #e3e3e3;
+        padding: 15px;
+        margin: 15px;
+        min-height: 80px;
+        .msgTitle {
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 600;
+            margin-bottom: 5px;
+            font-size: 18px;
+        }
+}

@@ -6,8 +6,10 @@ import AppActions from '../actions/AppActions';
 import WeightStore from '../stores/WeightStore';
 import UserStore from '../stores/UserStore';
 import FlatButton from 'material-ui/lib/flat-button';
+import RaisedButton from 'material-ui/lib/raised-button';
 import Card from './common/card';
 import FontAwesome from 'react-fontawesome';
+import Message from './common/message';
 
 import Utils from '../utils/utils';
 
@@ -66,9 +68,9 @@ class UserGoal extends React.Component {
         if (this.props && this.props.user && this.props.user.goal) {
             content = <div><h1><span className="goalTrophy"><FontAwesome name="trophy" style={{color:'#F9A825'}} /></span> {this.state.goal} KG</h1></div>
         } else {
-            content = <div>Add a goal:<br/>
-                <button className="btn btn-primary" onClick={this.handleOpen}>Add Goal</button>
-            </div>
+            content = <Message type="info" title="Note">To be able to view your BMI please add your height:<br/>
+                <RaisedButton secondary={true} onClick={this.handleOpen} icon={<FontAwesome name="plus"/>} label="Add Goal" />
+            </Message>
         }
         return (
             <Card cssClass="GoalComponent">

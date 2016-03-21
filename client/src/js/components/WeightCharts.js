@@ -8,6 +8,7 @@ import AddWeight from './AddWeight';
 import moment from 'moment';
 import FontAwesome from 'react-fontawesome';
 import Card from './common/card';
+import Message from './common/message';
 
 class WeightCharts extends React.Component {
     componentWillMount() {
@@ -87,10 +88,10 @@ class WeightCharts extends React.Component {
             content = <div><h4>Please add one more weight so we can display the chart</h4><Line data={data} options={options} width="1400" height="250" /></div>
         }else{
             content = (
-                <div className="noWeightAlert">
-                    <div className="introText"><h1>Kindly start adding your weight:</h1></div>
+                <Message title="Let's Start!" className="noWeightAlert">
+                    Kindly start adding your weight:
                     <div><AddWeight /></div>
-                </div>
+                </Message>
             )
         }
 

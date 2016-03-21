@@ -6,7 +6,10 @@ import AppActions from '../actions/AppActions';
 import WeightStore from '../stores/WeightStore';
 import UserStore from '../stores/UserStore';
 import FlatButton from 'material-ui/lib/flat-button';
+import RaisedButton from 'material-ui/lib/raised-button';
 import Card from './common/card';
+import Message from './common/message';
+import FontAwesome from 'react-fontawesome';
 
 import Utils from '../utils/utils';
 
@@ -73,9 +76,9 @@ class UserBMI extends React.Component {
         if (this.props && this.props.user && this.props.user.height) {
             content = <h1>{this.state.bmi}</h1>
         } else {
-            content = <div>To be able to view your BMI please add your height:<br/>
-                <button className="btn btn-primary" onClick={this.handleOpen}>Add Height</button>
-            </div>
+            content = <Message type="info" title="Note">To be able to view your BMI please add your height:<br/>
+                <RaisedButton secondary={true} icon={<FontAwesome name="plus"/>} onClick={this.handleOpen} label="Add Height" />
+            </Message>
         }
         return (
             <Card cssClass="BMIComponent" cardTitle="Current BMI">

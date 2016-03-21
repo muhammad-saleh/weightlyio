@@ -7,6 +7,7 @@ import AppActions from '../actions/AppActions';
 import WeightStore from '../stores/WeightStore';
 import moment from 'moment';
 import Card from './common/card';
+import Message from './common/message';
 import Utils from '../utils/utils';
 import FontAwesome from 'react-fontawesome';
 
@@ -62,7 +63,9 @@ class UserCurrentWeight extends React.Component {
             }
             content = <div><h1><span className={'wtSymbol ' + weightEqualClass}>{weightIcon} </span>{this.state.currentWeight} KG</h1><small>On {date}</small></div>
         }else{
-            content = <div>Sorry, No weight added yet</div>
+            content = <Message title="Sorry!">
+                There's no weight added yet :(
+            </Message>
         }
         return (
             <Card cssClass="CurrentWeightComponent" cardTitle="Current Weight">

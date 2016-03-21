@@ -40,7 +40,7 @@ module.exports = {
         new ExtractTextPlugin('../../dist/css/style.css', {
             allChunks: true
         }),
-        new CopyWebpackPlugin([{from: './src/images', to: './dist/images'}])
+        new CopyWebpackPlugin([{from: './src/images', to: './dist/images'}]),
         // new webpack.optimize.UglifyJsPlugin({minimize: false})
     ]
 }
