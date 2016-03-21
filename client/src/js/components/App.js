@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Header from './common/header';
+import LoginPage from './LoginPage';
 import AppActions from '../actions/AppActions';
 import UserStore from '../stores/UserStore';
 import WeightStore from '../stores/WeightStore';
@@ -19,8 +20,15 @@ class App extends React.Component {
     }
 
     componentWillMount() {
-        AppActions.getUser();
+        this.lock = new Auth0Lock('Ak0xmdNNIZNUbwtOYUVt1Y7wKPgPGra5', 'msaleh.auth0.com');
+        this.setState({idToken: this.getIdToken()});
+
         const Component = this;
+
+        if(this.getIdToken() && this.getIdToken().length > 0){
+            AppActions.getUser();
+        }
+
         Component.state = UserStore.getState();
 
         Component.state = {
@@ -32,7 +40,7 @@ class App extends React.Component {
         });
 
         WeightStore.listen(function(state) {
-            if(state && state.weight && state.weight instanceof Array && state.weight.length === 0){
+            if (state && state.weight && state.weight instanceof Array && state.weight.length === 0) {
                 Component.setState({noWeight: true});
             } else {
                 Component.setState({noWeight: false});
@@ -41,26 +49,56 @@ class App extends React.Component {
 
     }
 
+    getIdToken() {
+        var idToken = localStorage.getItem('userToken');
+        var authHash = this.lock.parseHash(window.location.hash);
+        if (!idToken && authHash) {
+            if (authHash.id_token) {
+                idToken = authHash.id_token
+                localStorage.setItem('userToken', authHash.id_token);
+            }
+            if (authHash.error) {
+                console.log("Error signing in", authHash);
+                return null;
+            }
+        }
+        return idToken;
+    }
+
     render() {
-        let noWeight = classNames({'noWeight' : this.state.noWeight});
-        let childrenWithProps = React.Children.map(this.props.children, (child) => {
-            return React.cloneElement(child, {user: this.state.user});
-        });
-        if (!this.state.user && this.state.isLoading) {
-            return (
-                <h1>Loading...</h1>
-            )
+
+        if (this.state.idToken) {
+            let noWeight = classNames({'noWeight': this.state.noWeight});
+            let childrenWithProps = React.Children.map(this.props.children, (child) => {
+                return React.cloneElement(child, {user: this.state.user});
+            });
+
+            if (!this.state.user && this.state.isLoading) {
+                return <h1>Loading...</h1>
+            } else {
+                return(
+                    <div user={this.state.user} lock={this.lock} isLoading={this.state.isLoading} idToken={this.state.idToken} className={noWeight}>
+                        <Nav user={this.state.user}/>
+                        <Header user={this.state.user} isLoading={this.state.isLoading}/>
+                        <div className="contentContainer" user={this.state.user}>
+                            {childrenWithProps}
+                        </div>
+                    </div>
+                )
+            }
         } else {
-            return (
-                <div user={this.state.user} isLoading={this.state.isLoading} className={noWeight}>
-                    <Nav user={this.state.user} />
-                    <Header user={this.state.user} isLoading={this.state.isLoading}/>
-                    <div className="contentContainer" user={this.state.user}>
-                        {childrenWithProps}
+            console.log('login page')
+            return(
+                <div>
+                    <Nav />
+                    <Header />
+                    <div className="contentContainer">
+                        <LoginPage lock={this.lock}/>
                     </div>
                 </div>
             )
         }
+
     }
 }
 
