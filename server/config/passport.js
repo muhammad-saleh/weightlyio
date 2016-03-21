@@ -9,7 +9,7 @@ const User = mongoose.model('User');
 
 const local = require('./passport/local');
 const facebook = require('./passport/facebook');
-// const google = require('./passport/google');
+const auth0 = require('./passport/auth0');
 // const twitter = require('./passport/twitter');
 
 /**
@@ -27,8 +27,6 @@ module.exports = function (passport) {
     }, cb));
 
     // use these strategies
-    passport.use(local);
-    passport.use(facebook);
-    // passport.use(google);
+    passport.use(auth0);
     // passport.use(twitter);
 };

@@ -5,7 +5,7 @@ const Weight = require('../models/weight');
 
 module.exports = function (req, res) {
     Weight.find({
-        user: req.user._id.toString()
+        user: req.user.sub.toString()
     }, {'_id':0, 'date':1, 'user':1, 'weight':1, 'feel':1},
     function (err, weights) {
         if (err) {
@@ -14,7 +14,7 @@ module.exports = function (req, res) {
             var nWeights = weights.sort(function(a,b){
                 return new Date(a.date) - new Date(b.date);
             });
-            res.json(nWeights)
+            res.json(nWeights);
         }
     })
 }

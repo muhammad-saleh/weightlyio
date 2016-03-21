@@ -7,7 +7,7 @@ module.exports = function (req, res) {
     var weight = new Weight({
         weight: req.body.weight.toString(),
         date: req.body.date || new Date(),
-        user: req.user._id.toString(),
+        user: req.user.sub.toString(),
         feel: req.body.feel || "normal"
     });
 

@@ -3,8 +3,11 @@ const WeightSource = {
     return $.ajax({
         method: "GET",
         url: "http://localhost:3000/weight",
-        xhrFields: {
-            withCredentials: true
+        'beforeSend': function(xhr) {
+            if (localStorage.getItem('userToken')) {
+              xhr.setRequestHeader('Authorization',
+                    'Bearer ' + localStorage.getItem('userToken'));
+            }
         },
         crossDomain: true
     })
@@ -14,7 +17,12 @@ const WeightSource = {
         method: "POST",
         url: "http://localhost:3000/weight",
         data: { weight: data.weight, date: data.date, feel:""},
-        xhrFields: { withCredentials: true },
+        'beforeSend': function(xhr) {
+            if (localStorage.getItem('userToken')) {
+              xhr.setRequestHeader('Authorization',
+                    'Bearer ' + localStorage.getItem('userToken'));
+            }
+        },
         crossDomain: true
     })
   }

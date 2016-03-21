@@ -8,16 +8,6 @@ const mongoose = require('mongoose');
 const wrap = require('co-express');
 const User = mongoose.model('User');
 
-/**
- * Load
- */
-
-exports.load = wrap(function* (req, res, next, _id) {
-  const criteria = { _id };
-  req.profile = yield User.load({ criteria });
-  if (!req.profile) return next(new Error('User not found'));
-  next();
-});
 
 /**
  * Create user
@@ -33,38 +23,30 @@ exports.create = wrap(function* (req, res) {
   });
 });
 
-/**
- *  Show profile
- */
-
-exports.show = function (req, res) {
-  const user = req.profile;
-  res.render('users/show', {
-    title: user.name,
-    user: user
-  });
-};
 
 
 /**
  *  get profile
  */
 
+// exports.getUser = function (req, res) {
+//     const _id = req.user._id;
+//     User.findById(_id,function(err, user){
+//         // let returned_user = {
+//         //     _id: _id,
+//         //     email: user.email,
+//         //     provider: user.provider,
+//         //     height: user.height || null,
+//         //     goal: user.goal || null,
+//         //     data: user[user.provider],
+//         //     username: user.username
+//         // };
+//         // returned_user.data.provider = user.provider || 'local';
+//         res.send(user);
+//     })
+// };
 exports.getUser = function (req, res) {
-    const _id = req.user._id;
-    User.findById(_id,function(err, user){
-        let returned_user = {
-            _id: _id,
-            email: user.email,
-            provider: user.provider,
-            height: user.height || null,
-            goal: user.goal || null,
-            data: user[user.provider],
-            username: user.username
-        };
-        // returned_user.data.provider = user.provider || 'local';
-        res.send(returned_user);
-    })
+    res.send(req.user);
 };
 
 exports.postHeight = function (req, res) {

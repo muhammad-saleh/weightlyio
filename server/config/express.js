@@ -5,17 +5,17 @@
  */
 
 const express = require('express');
-const session = require('express-session');
+// const session = require('express-session');
 const compression = require('compression');
 const morgan = require('morgan');
 const cookieParser = require('cookie-parser');
-const cookieSession = require('cookie-session');
+// const cookieSession = require('cookie-session');
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 const multer = require('multer');
 const swig = require('swig');
 
-const mongoStore = require('connect-mongo')(session);
+const mongoStore = require('connect-mongo');
 const flash = require('connect-flash');
 const winston = require('winston');
 const helpers = require('view-helpers');
@@ -23,6 +23,7 @@ const config = require('./config');
 const pkg = require('../package.json');
 
 const env = process.env.NODE_ENV || 'development';
+
 
 /**
  * Expose
@@ -86,23 +87,7 @@ module.exports = function (app, passport) {
 
   // CookieParser should be above session
   app.use(cookieParser());
-  app.use(cookieSession({ secret: 'ana secret fash5 gedn ya3ny el7' }));
-  app.use(session({
-    resave: true,
-    saveUninitialized: true,
-    secret: pkg.name,
-    store: new mongoStore({
-      url: config.db,
-      collection : 'sessions'
-    })
-  }));
 
-  // use passport session
-  app.use(passport.initialize());
-  app.use(passport.session());
-
-  // connect flash for flash messages - should be declared after sessions
-  app.use(flash());
 
   // should be declared after session and flash
   app.use(helpers(pkg.name));
