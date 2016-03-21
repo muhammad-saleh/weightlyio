@@ -9,6 +9,7 @@ const express = require('express');
 const compression = require('compression');
 const morgan = require('morgan');
 const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
 const winston = require('winston');
 const config = require('./config');
 const swig = require('swig');
@@ -55,6 +56,7 @@ app.use(cors());
   }
 
   // CookieParser should be above session
+  app.use(bodyParser());
   app.use(cookieParser());
 
 };
