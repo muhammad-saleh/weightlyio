@@ -10,7 +10,7 @@ import Nav from './common/nav/nav';
 import FontAwesome from 'react-fontawesome';
 import classNames from 'classnames';
 import injectTapEventPlugin from 'react-tap-event-plugin';
-
+import LinearProgress from 'material-ui/lib/linear-progress';
 import alt from '../alt';
 
 class App extends React.Component {
@@ -20,26 +20,24 @@ class App extends React.Component {
     }
 
     componentWillMount() {
+        const Component = this;
         this.lock = new Auth0Lock('Ak0xmdNNIZNUbwtOYUVt1Y7wKPgPGra5', 'msaleh.auth0.com');
         this.setState({idToken: this.getIdToken()});
 
-        const Component = this;
 
         if(this.getIdToken() && this.getIdToken().length > 0){
             AppActions.getUser();
         }
 
-        Component.state = UserStore.getState();
+        Component.setState(UserStore.getState());
 
-        Component.state = {
-            isLoading: UserStore.getState().isLoading
-        }
 
         UserStore.listen(function(state) {
-            Component.setState(UserStore.getState());
+            Component.setState(state);
         });
 
         WeightStore.listen(function(state) {
+            Component.setState(state);
             if (state && state.weight && state.weight instanceof Array && state.weight.length === 0) {
                 Component.setState({noWeight: true});
             } else {
@@ -67,6 +65,11 @@ class App extends React.Component {
 
     render() {
 
+        let progress = null;
+        if(this.state.isLoading === true) {
+            progress = <LinearProgress mode="indeterminate"/>
+        }
+
         if (this.state.idToken) {
             let noWeight = classNames({'noWeight': this.state.noWeight});
             let childrenWithProps = React.Children.map(this.props.children, (child) => {
@@ -75,9 +78,10 @@ class App extends React.Component {
 
             if (!this.state.user && this.state.isLoading) {
                 return <h1>Loading...</h1>
-            } else {
+            } else if(this.state.user && !this.state.isLoading) {
                 return(
                     <div user={this.state.user} lock={this.lock} isLoading={this.state.isLoading} idToken={this.state.idToken} className={noWeight}>
+                        {progress}
                         <Nav user={this.state.user}/>
                         <Header user={this.state.user} isLoading={this.state.isLoading}/>
                         <div className="contentContainer" user={this.state.user}>
@@ -85,9 +89,18 @@ class App extends React.Component {
                         </div>
                     </div>
                 )
+            } else {
+                return(
+                    <div>
+                        <Nav />
+                        <Header />
+                        <div className="contentContainer">
+                            <LoginPage lock={this.lock}/>
+                        </div>
+                    </div>
+                )
             }
         } else {
-            console.log('login page')
             return(
                 <div>
                     <Nav />

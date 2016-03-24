@@ -8,14 +8,9 @@ import GoalSource from '../sources/GoalSource';
 
 class AppActions {
     constructor() {
-
-    }
-
-    setNewGoal(goal) {
-        //TODO: AJAX Call
-
-        //In AJAX Succes
-        this.actions.addGoal(goal);
+        this.generateActions(
+            'getUserError'
+        )
     }
 
     getWeight() {
@@ -78,6 +73,8 @@ class AppActions {
             dispatch();
             UserSource.fetch().then((user)=>{
                 this.getUserSuccess(user);
+            }).fail(function(e){
+                this.getUserError();
             })
         }
 

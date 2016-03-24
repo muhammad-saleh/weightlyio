@@ -15,6 +15,7 @@ class UserStore {
 
         this.bindListeners({
             getUserSuccess: AppActions.getUserSuccess,
+            getUserError: AppActions.GET_USER_ERROR,
             postHeightSuccess: AppActions.postHeightSuccess,
             postGoalSuccess: AppActions.postGoalSuccess
         });
@@ -24,21 +25,26 @@ class UserStore {
     getUser(user) {
         return this.user;
     }
+
     onGetUser(action) {
         this.loading = true;
     }
+
     getUserSuccess(user) {
         this.isLoading = false;
         this.user = user;
     }
+
     postHeightSuccess(data,e) {
         this.isLoading = false;
         this.user.height = data.height;
     }
+
     postGoalSuccess(data,e) {
         this.isLoading = false;
         this.user.goal = data.goal;
     }
+
     getUserError(action) {
         this.isLoading = false;
         this.user = undefined;
