@@ -3,14 +3,9 @@ import React from 'react';
 
 class LoginPage extends React.Component {
     componentDidMount(){
-        var lock = new Auth0Lock('1ehkNqrkZocJ4shutmXZruY3xFdhdRlB', 'msaleh.auth0.com');
+        var lock = new Auth0Lock('Ak0xmdNNIZNUbwtOYUVt1Y7wKPgPGra5', 'msaleh.auth0.com');
         lock.show({
           container: 'LoginBox'
-        , callbackURL: ''
-        , responseType: 'code'
-        , authParams: {
-          scope: 'openid profile'
-        }
         });
     }
     showLock() {
