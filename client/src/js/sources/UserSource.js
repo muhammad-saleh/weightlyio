@@ -8,6 +8,19 @@ const UserSource = {
         },
         crossDomain: true
     });
+},
+  fetchMeta: function () {
+    return $.ajax({
+        method: "GET",
+        url: "http://localhost:3000/user",
+        'beforeSend': function(xhr) {
+            if (localStorage.getItem('userToken')) {
+              xhr.setRequestHeader('Authorization',
+                    'Bearer ' + localStorage.getItem('userToken'));
+            }
+        },
+        crossDomain: true
+    });
   }
 };
 
