@@ -32,9 +32,9 @@ class UserBMI extends React.Component {
             let stateWeight = Component.state.weight;
 
             if(Component.props.user.height){
-                userHeight = parseInt(Component.props.user.height);
+                userHeight = parseInt(Component.props.user.meta.height);
             } else {
-                userHeight = parseInt(UserStoreState.user.height);
+                userHeight = parseInt(UserStoreState.user.meta.height);
             }
 
             if (stateWeight && stateWeight instanceof Array && stateWeight.length > 0 && userHeight) {
@@ -73,7 +73,7 @@ class UserBMI extends React.Component {
           <FlatButton label="Submit" primary={true} keyboardFocused={true} onTouchTap={this.handleClose} />,
         ];
 
-        if (this.props && this.props.user && this.props.user.height) {
+        if (this.props && this.props.user && this.props.user.meta && this.props.user.meta.height) {
             content = <h1>{this.state.bmi}</h1>
         } else {
             content = <Message type="info" title="Note">To be able to view your BMI please add your height:<br/>

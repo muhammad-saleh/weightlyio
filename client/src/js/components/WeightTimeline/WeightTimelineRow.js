@@ -12,7 +12,7 @@ import FontAwesome from 'react-fontawesome';
 class WeightTimelineRow extends React.Component {
     render() {
         let Component = this;
-        let height = UserStore.getState().user.height;
+        let height = UserStore.getState().user.meta.height;
         let weightIcon = null;
         let weightEqualClass = '';
         // let colorsArray = ["01579B","0277BD","0288D1","039BE5","03A9F4","29B6F6","4FC3F7"];
