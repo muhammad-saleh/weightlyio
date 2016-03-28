@@ -49,7 +49,6 @@ class AppActions {
     postGoal(data) {
         let goal = data;
         this.postWeightInit();
-
         return (dispatch) => {
             GoalSource.post(goal).then((data)=>{
                 this.postGoalSuccess(goal);
@@ -70,7 +69,10 @@ class AppActions {
         return (dispatch) => {
             dispatch();
             UserSource.fetch().then((user)=>{
-                this.getUserSuccess(user);
+                UserSource.fetchMeta().then((meta)=>{
+                    user.meta = meta;
+                    this.getUserSuccess(user);                    
+                })
             }).fail((e)=>{
                 this.getUserError(e);
             })
