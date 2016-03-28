@@ -8,9 +8,7 @@ import GoalSource from '../sources/GoalSource';
 
 class AppActions {
     constructor() {
-        this.generateActions(
-            'getUserError'
-        )
+
     }
 
     getWeight() {
@@ -73,8 +71,8 @@ class AppActions {
             dispatch();
             UserSource.fetch().then((user)=>{
                 this.getUserSuccess(user);
-            }).fail(function(e){
-                this.getUserError();
+            }).fail((e)=>{
+                this.getUserError(e);
             })
         }
 
@@ -82,6 +80,12 @@ class AppActions {
 
     getUserSuccess(user) {
         return user;
+    }
+
+    getUserError(e) {
+        window.location.hash = '';
+        localStorage.removeItem('userToken');
+        return {e};
     }
 
     getWeightSuccess(weight) {
