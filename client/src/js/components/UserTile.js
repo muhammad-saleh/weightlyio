@@ -38,6 +38,13 @@ export default class UserTile extends React.Component {
     //     }
     // }
 
+    handleLogout(e) {
+        e.preventDefault();
+        localStorage.removeItem('userToken');
+        window.location.hash = '';
+        window.location.href = window.location.href;
+    }
+
     render() {
         return (
             <Card cssClass="userComponent">
@@ -47,7 +54,7 @@ export default class UserTile extends React.Component {
                 <div className="allInfo">
                     <div className="userData">
                         <div className="userInfo">{this.state.user.name}</div>
-                        <div className="logoutLink"><a href={Constants.LOGOUT_URL}>Logout</a></div>
+                        <div className="logoutLink"><a onClick={this.handleLogout}>Logout</a></div>
                     </div>
                     <div className="addWeightBtn"><AddWeight/></div>
                 </div>
