@@ -36,19 +36,42 @@ const User = mongoose.model('User');
 // };
 
 exports.postHeight = function (req, res) {
-    User.findById(req.user.sub, function (err, user) {
-        if (err) return done(err);
-        user.height = req.body.height;
-        user.save();
-        res.send();
-    });
+    User.count({sub: req.user.sub},function(err, c){
+        if(c === 0) {
+            let nUser = new User({
+                sub: req.user.sub,
+                height: req.body.height
+            });
+            nUser.save();
+            res.send();
+        } else {
+            User.findById(req.user.sub, function (err, user) {
+                if (err) return console.log(err);
+                user.height = req.body.height;
+                user.save();
+                res.send();
+            });
+        }
+    })
+
 }
 
 exports.postGoal = function (req, res) {
-    User.findById(req.user.sub, function (err, user) {
-        if (err) return done(err);
-        user.goal = req.body.goal;
-        user.save();
-        res.send();
-    });
+    User.count({sub: req.user.sub},function(err, c){
+        if(c === 0) {
+            let nUser = new User({
+                sub: req.user.sub,
+                goal: req.body.goal
+            });
+            nUser.save();
+            res.send();
+        } else {
+            User.findById(req.user.sub, function (err, user) {
+                if (err) return console.log(err);
+                user.goal = req.body.goal;
+                user.save();
+                res.send();
+            });
+        }
+    })
 }
