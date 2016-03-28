@@ -31,7 +31,7 @@ const isAuth = [auth.requiresLogin];
  */
 
 module.exports = function (app, passport) {
-    // app.get('/user', authCheck, users.getUser);
+    app.get('/user', authCheck, users.getUser);
 
     app.post('/height', authCheck, users.postHeight);
     app.post('/goal', authCheck, users.postGoal);
