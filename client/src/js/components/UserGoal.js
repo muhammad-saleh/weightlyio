@@ -30,10 +30,10 @@ class UserGoal extends React.Component {
             Component.setState(state);
             let UserStoreState = UserStore.getState();
 
-            if(Component.props.user.goal){
-                userGoal = Component.props.user.goal;
+            if(Component.props.user.meta && Component.props.user.meta.goal){
+                userGoal = Component.props.user.meta.goal;
             } else {
-                userGoal = UserStoreState.user.goal;
+                userGoal = UserStoreState.user.meta.goal;
             }
             Component.setState({goal: userGoal});
 
@@ -49,7 +49,7 @@ class UserGoal extends React.Component {
     handleClose = () => {
         let Component = this;
         this.setState({open: false});
-        if(this.state && this.state.goal){
+        if(this.state && ( this.state.goal || this.state.goalNew ) ){
             AppActions.postGoal({ goal: this.state.goalNew });
             Component.setState({goal: this.state.goalNew});
         }
@@ -65,7 +65,7 @@ class UserGoal extends React.Component {
           <FlatButton label="Submit" primary={true} keyboardFocused={true} onTouchTap={this.handleClose} />,
         ];
 
-        if (this.props && this.props.user && this.props.user.goal) {
+        if (this.props && this.props.user && this.props.user.meta && this.props.user.meta.goal) {
             content = <div><h1><span className="goalTrophy"><FontAwesome name="trophy" style={{color:'#F9A825'}} /></span> {this.state.goal} KG</h1></div>
         } else {
             content = <Message type="info" title="Note">To be able to view your BMI please add your height:<br/>
