@@ -28,9 +28,11 @@ class AddWeight extends React.Component {
 
     handleClose = () => {
         this.setState({open: false});
-        if(this.state && this.state.newWeight && this.state.newWeightDate && this.state.newWeightTime){
-            AppActions.postWeight({weight: this.state.newWeight, date: moment(this.state.newWeightDate+" "+this.state.newWeightTime).toDate()})
-        }
+        AppActions.postWeight({weight: this.state.newWeight, date: moment(this.state.newWeightDate+" "+this.state.newWeightTime).toDate()})
+    };
+
+    handleDismiss = () => {
+        this.setState({open: false});
     };
 
     handleDateChange = (event, date) => {
@@ -60,7 +62,7 @@ class AddWeight extends React.Component {
               actions={actions}
               modal={false}
               open={this.state.open}
-              onRequestClose={this.handleClose}
+              onRequestClose={this.handleDismiss}
             >
                 <DatePicker floatingLabelText="Date" hintText="Date Picker" value={this.state.dateField} onChange={this.handleDateChange} />
                 <TimePicker floatingLabelText="Time" hintText="Time Picker" value={this.state.timeField} onChange={this.handleTimeChange} />
