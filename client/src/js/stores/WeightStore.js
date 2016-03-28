@@ -18,6 +18,7 @@ class WeightStore {
         this.bindListeners({
             getWeightInit: AppActions.GET_WEIGHT_INIT,
             getWeightSuccess: AppActions.GET_WEIGHT_SUCCESS,
+            postWeightInit: AppActions.POST_WEIGHT_INIT,
             postWeightSuccess: AppActions.POST_WEIGHT_SUCCESS,
             postHeightSuccess: AppActions.POST_HEIGHT_SUCCESS,
             postGoalSuccess: AppActions.POST_GOAL_SUCCESS,
@@ -28,23 +29,34 @@ class WeightStore {
         return this.weight;
     }
     getWeightInit() {
-        this.waitFor(UserStore);
         this.isLoading = true;
+        return this.isLoading;
+    }
+    postWeightInit() {
+        this.isLoading = true;
+        return this.isLoading;
     }
     getWeightSuccess(weight) {
-        this.waitFor(UserStore);
         this.isLoading = false;
-        this.weight = weight;
+        let nWeight = weight.sort(function(a,b){
+            return new Date(a.date) - new Date(b.date);
+        });
+        this.weight = nWeight;
+        return this.weight;
     }
     postWeightSuccess(data) {
-        this.waitFor(UserStore);
         this.isLoading = false;
         this.weight.unshift(data);
+        let nWeight = this.weight.sort(function(a,b){
+            return new Date(a.date) - new Date(b.date);
+        });
+        this.weight = nWeight;
         return this.weight;
     }
     getWeightError() {
         this.isLoading = false;
         this.weight = undefined;
+        return this.isLoading;
     }
     postHeightSuccess(data) {
         this.isLoading = false;

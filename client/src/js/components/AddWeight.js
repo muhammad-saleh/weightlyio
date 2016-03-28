@@ -16,7 +16,9 @@ class AddWeight extends React.Component {
         this.state = {
             open: false,
             dateField: new Date(),
-            timeField: new Date()
+            timeField: new Date(),
+            newWeightDate: new Date(),
+            newWeightTime: new Date()
         }
     }
 
