@@ -1,8 +1,10 @@
+import Constants from '../constants/constants';
+
 const HeightSource = {
   post: function (data) {
     return $.ajax({
         method: "POST",
-        url: "http://localhost:3000/height",
+        url: Constants["SERVER_URL"] + "height",
         data: { height: data.height },
         'beforeSend': function(xhr) {
             if (localStorage.getItem('userToken')) {

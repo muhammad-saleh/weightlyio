@@ -1,8 +1,10 @@
+import Constants from '../constants/constants';
+
 const UserSource = {
   fetch: function () {
     return $.ajax({
         method: "POST",
-        url: "https://msaleh.auth0.com/tokeninfo",
+        url: Constants["AUTH0"],
         data: {
             "id_token": localStorage.getItem('userToken')
         },
@@ -12,7 +14,7 @@ const UserSource = {
   fetchMeta: function () {
     return $.ajax({
         method: "GET",
-        url: "http://localhost:3000/user",
+        url: Constants["SERVER_URL"] + "/user",
         'beforeSend': function(xhr) {
             if (localStorage.getItem('userToken')) {
               xhr.setRequestHeader('Authorization',
