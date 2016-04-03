@@ -7974,6 +7974,8 @@ nav {
     overflow: visible !important; }
   nav .menuUserTile {
     text-align: center; }
+    nav .menuUserTile div {
+      line-height: 23px; }
 
 .chartComponent {
   padding: 2%;
@@ -8122,6 +8124,10 @@ nav {
 
 .chartComponent .cardTitle {
   margin-bottom: 20px; }
+
+.chartComponent .messagesComponent {
+  margin: 0;
+  border: 0px solid; }
 
 .messagesComponent {
   border: 1px solid #e3e3e3;

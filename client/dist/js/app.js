@@ -73626,12 +73626,6 @@
 	    }
 
 	    _createClass(NavLoggedInItems, [{
-	        key: 'componentWillMount',
-	        value: function componentWillMount() {
-	            var Component = this;
-	            console.log(this.props.user);
-	        }
-	    }, {
 	        key: 'handleLogout',
 	        value: function handleLogout(e) {
 	            e.preventDefault();
@@ -73666,24 +73660,6 @@
 	                            { onClick: this.handleLogout },
 	                            'Logout'
 	                        )
-	                    )
-	                ),
-	                _react2.default.createElement(
-	                    _menuItem2.default,
-	                    null,
-	                    _react2.default.createElement(
-	                        _reactRouter.Link,
-	                        { to: _HomePage2.default.path },
-	                        'Home'
-	                    )
-	                ),
-	                _react2.default.createElement(
-	                    _menuItem2.default,
-	                    null,
-	                    _react2.default.createElement(
-	                        _reactRouter.Link,
-	                        { to: _LoginPage2.default.path },
-	                        'Login'
 	                    )
 	                )
 	            );
