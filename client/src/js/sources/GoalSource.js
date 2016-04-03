@@ -1,6 +1,6 @@
 import Constants from '../constants/constants';
 
-const HeightSource = {
+const GoalSource = {
   post: function (data) {
     return $.ajax({
         method: "POST",
@@ -17,4 +17,4 @@ const HeightSource = {
   }
 };
 
-export default HeightSource;
+export default GoalSource;
