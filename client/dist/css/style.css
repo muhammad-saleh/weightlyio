@@ -7972,6 +7972,8 @@ nav {
       color: #FFF; }
   nav .navRoot > div {
     overflow: visible !important; }
+  nav .menuUserTile {
+    text-align: center; }
 
 .chartComponent {
   padding: 2%;

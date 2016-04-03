@@ -28,7 +28,7 @@ export default class Nav extends React.Component {
     render() {
         let NavItems;
         if (this.props.user) {
-            NavItems = <NavLoggedInItems/>
+            NavItems = <NavLoggedInItems user={this.props.user}/>
         } else {
             NavItems = <NavNotLoggedInItems/>
         }
