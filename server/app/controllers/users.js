@@ -17,7 +17,6 @@ const User = mongoose.model('User');
 
 exports.getUser = function (req, res) {
     const sub = req.user.sub;
-    console.log(sub)
     User.findOne({sub: sub},function(err, user){
         if(err) res.send(err);
         if(user){
@@ -68,7 +67,7 @@ exports.postGoal = function (req, res) {
             nUser.save();
             res.send();
         } else {
-            User.findOne(req.user.sub, function (err, user) {
+            User.findOne({sub: req.user.sub}, function (err, user) {
                 if (err) return console.log(err);
                 user.goal = req.body.goal;
                 user.save();
