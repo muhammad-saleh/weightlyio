@@ -28,7 +28,7 @@ class AddWeight extends React.Component {
 
     handleClose = () => {
         this.setState({open: false});
-        AppActions.postWeight({weight: this.state.newWeight, date: moment(this.state.newWeightDate+" "+this.state.newWeightTime).toDate()})
+        AppActions.postWeight({weight: this.state.newWeight, date: moment(moment(this.state.newWeightDate).format("YYYY-MM-DD")+" "+moment(this.state.newWeightTime).format("HH:mm")).toDate()})
     };
 
     handleDismiss = () => {
