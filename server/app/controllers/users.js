@@ -17,14 +17,19 @@ const User = mongoose.model('User');
 
 exports.getUser = function (req, res) {
     const sub = req.user.sub;
-    User.findOne(sub,function(err, user){
+    console.log(sub)
+    User.findOne({sub: sub},function(err, user){
         if(err) res.send(err);
-        let returned_user = {
-            sub: user.sub,
-            height: user.height || null,
-            goal: user.goal || null
-        };
-        res.send(returned_user);
+        if(user){
+            let returned_user = {
+                sub: user.sub,
+                height: user.height || null,
+                goal: user.goal || null
+            };
+            res.send(returned_user);
+        } else {
+            res.send({});
+        }
     })
 };
 
