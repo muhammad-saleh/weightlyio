@@ -26,6 +26,14 @@ Weightly is a weight tracking app with these list of features:
 	- Babel (ES2015 Transpiling)
 
 <br><br>
+###Start the project
+- Clone the repo
+- Make sure that `mongod` is running
+- Open `server/` and do `npm install`
+- Run server using `npm start`
+- Open `client/` and do `npm install`
+- Run client using `webpack-dev-server --hot --inline`
+<br><br>
 ###Code reviews and contributions are very welcome	
 <br><br>
 ###Weightly is a work in progress but here's the basic wireframe for the expected result
